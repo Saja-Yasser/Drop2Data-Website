@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Drop2Data | Landing Page</title>
+  <!-- Particles.js Library -->
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+  <link rel="stylesheet" href="Landingstyle.css">
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <!-- LEFT -->
+    <a href="#landing">
+      <div class="logo">Drop2Data</div>
+    </a>
+
+    <!-- CENTER TITLES -->
+    <div class="nav-center">
+      <a href="Landingpage main.html">About</a>
+
+      <a href="#contact">Contact</a>
+    </div>
+
+    <!-- RIGHT -->
+    <nav class="desktop-nav">
+      <a href="signup.html">Login</a>
+      <a href="signup.html" class="btn-primary">Sign Up</a>
+    </nav>
+
+
+  </header>
+
+
+  <!-- HERO SECTION -->
+  <section id="landing" class="hero">
+    <div id="particles-js"></div>
+
+    <div class="container-carousel">
+      <div class="carousel">
+        <div class="carousel-item">
+          <img src="monitoring.jpg" alt="Water Monitoring">
+          <div class="carousel-caption">
+            <h2>Monitor Water Usage</h2>
+            <p>Real-time water usage & quality tracking.</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="riseawarness.jpg" alt="Awareness">
+          <div class="carousel-caption">
+            <h2>Raise Awareness</h2>
+            <p>Learn how to reduce water waste effectively.</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="waterchallenge.jpg" alt="Challenges">
+          <div class="carousel-caption">
+            <h2>Take Challenges</h2>
+            <p>Save water, earn points & badges for achievements.</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="analysedata.jpeg" alt="Data Insights">
+          <div class="carousel-caption">
+            <h2>Analyze Data</h2>
+            <p>Gain insights from your water usage data.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="dots-container">
+        <div class="dot">
+          <div class="fill"></div>
+        </div>
+        <div class="dot">
+          <div class="fill"></div>
+        </div>
+        <div class="dot">
+          <div class="fill"></div>
+        </div>
+        <div class="dot">
+          <div class="fill"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="scroll-story">
+    <div class="pin-wrapper">
+      <!-- TAGLINE SECTION -->
+      <section class="story-section section-1">
+        <div class="tagline-container">
+          <div>
+            <h1 class="move-item"><span>From Every Drop to Smart Decisions</span></h1>
+            <p class="move-item"><span>
+                Monitor your water. Understand the risks. <br>
+                Build sustainable habits.
+              </span>
+            </p>
+
+            <div class="tagline-buttons">
+              <a href="signup.html" class="btn-secondary move-item">Get Started</a>
+            </div><br>
+            <h1 class="move-item"><span>Explore Features </span><i class="fas fa-arrow-down"></i></h1>
+          </div>
+        </div>
+      </section>
+
+      <!-- FEATURE CARDS -->
+      <section id="features" class="story-section section-2">
+        <div class="feature-cards-container">
+          <div class="content content-row">
+            <div class="feature-card move-item">
+              <i class="fas fa-chart-line"></i>
+              <h3>Monitoring</h3>
+              <p>Real-time water usage & quality tracking with AI-powered insights</p>
+            </div>
+            <div class="feature-card move-item">
+              <i class="fas fa-exclamation-triangle"></i>
+              <h3>Awareness</h3>
+              <p>Learn how to reduce waste and protect water quality</p>
+            </div>
+            <div class="feature-card move-item">
+              <i class="fas fa-trophy"></i>
+              <h3>Challenges</h3>
+              <p>Save water, earn points & badges through gamification</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="normal-section how-it-works">
+    <h2>How It Works</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-number">1</div>
+        <h4>Sign Up</h4>
+        <p>Create your free account</p>
+      </div>
+      <div class="step">
+        <div class="step-number">2</div>
+        <h4>Connect Device</h4>
+        <p>Link your Drop2Data bracelet or meter</p>
+      </div>
+      <div class="step">
+        <div class="step-number">3</div>
+        <h4>Track</h4>
+        <p>Monitor usage and quality</p>
+      </div>
+      <div class="step">
+        <div class="step-number">4</div>
+        <h4>Improve</h4>
+        <p>Build sustainable habits</p>
+      </div>
+    </div>
+  </section>
+  <!-- TEAM SECTION -->
+<section id= "contact" class="normal-section team-section">
+    <h2>Team & Contact</h2>
+    <p style="color: var(--text-gray); font-size: 1.1rem; max-width: 600px; margin: 0 auto 40px; text-align: center;">
+        Meet our talented team members who work together to drive innovation and success.
+    </p>
+    
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+        
+        <!-- Team Member - Updated for dark theme -->
+    <div style="background-color: rgba(255, 255, 255, 0.05); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px; overflow: hidden; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+        <div style="background: linear-gradient(135deg, #4b6cb7 0%, #182848 100%); height: 120px; position: relative;">
+            <div style="width: 100px; height: 100px; border-radius: 50%; border: 5px solid rgba(255, 255, 255, 0.1); background-color: rgba(0, 0, 0, 0.3); position: absolute; bottom: -40px; left: 50%; transform: translateX(-50%); overflow: hidden; display: flex; align-items: center; justify-content: center;">
+                <img 
+                    src="saja.jpg" 
+                    alt="SY"
+                    style="width: 100%; height: 100%; object-fit: cover;"
+                >
+            </div>
+        </div>
+        <div style="padding: 60px 25px 25px; text-align: center;">
+            <h3 style="font-size: 1.4rem; margin-bottom: 8px; color: var(--offwhite);">Saja Yasser</h3>
+            <p style="color: var(--teal); font-weight: 600; margin-bottom: 12px;">CS / SCM (Software Team)</p>
+            <p style="color: var(--text-gray); margin-bottom: 15px; font-size: 0.95rem;">
+                <i class="fas fa-envelope" style="margin-right: 8px;"></i>
+                sajayassersaad2009@gmail.com
+            </p>
+        </div>
+    </div>
+
+        <!-- Team Member  - Updated for dark theme -->
+        <div style="background-color: rgba(255, 255, 255, 0.05); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px; overflow: hidden; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+        <div style="background: linear-gradient(135deg, #4b6cb7 0%, #182848 100%); height: 120px; position: relative;">
+            <div style="width: 100px; height: 100px; border-radius: 50%; border: 5px solid rgba(255, 255, 255, 0.1); background-color: rgba(0, 0, 0, 0.3); position: absolute; bottom: -40px; left: 50%; transform: translateX(-50%); overflow: hidden; display: flex; align-items: center; justify-content: center;">
+                <img 
+                    src="sajam.jpg" 
+                    alt="SM"
+                    style="width: 100%; height: 100%; object-fit: cover;"
+                >
+            </div>
+        </div>
+        <div style="padding: 60px 25px 25px; text-align: center;">
+            <h3 style="font-size: 1.4rem; margin-bottom: 8px; color: var(--offwhite);">Saja Mahmoud</h3>
+            <p style="color: var(--teal); font-weight: 600; margin-bottom: 12px;">CFO / CS (Hardware Team)</p>
+            <p style="color: var(--text-gray); margin-bottom: 15px; font-size: 0.95rem;">
+                <i class="fas fa-envelope" style="margin-right: 8px;"></i>
+                sagasama902@gmail.com 
+            </p>
+        </div>
+    </div>
+
+        <!-- Team Member  - Updated for dark theme -->
+        <div style="background-color: rgba(255, 255, 255, 0.05); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px; overflow: hidden; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+        <div style="background: linear-gradient(135deg, #4b6cb7 0%, #182848 100%); height: 120px; position: relative;">
+            <div style="width: 100px; height: 100px; border-radius: 50%; border: 5px solid rgba(255, 255, 255, 0.1); background-color: rgba(0, 0, 0, 0.3); position: absolute; bottom: -40px; left: 50%; transform: translateX(-50%); overflow: hidden; display: flex; align-items: center; justify-content: center;">
+                <img 
+                    src="judy.jpg" 
+                    alt="JM"
+                    style="width: 100%; height: 100%; object-fit: cover;"
+                >
+            </div>
+        </div>
+        <div style="padding: 60px 25px 25px; text-align: center;">
+            <h3 style="font-size: 1.4rem; margin-bottom: 8px; color: var(--offwhite);">Judy Mahmoud</h3>
+            <p style="color: var(--teal); font-weight: 600; margin-bottom: 12px;">CFO / CS (Hardware Team)</p>
+            <p style="color: var(--text-gray); margin-bottom: 15px; font-size: 0.95rem;">
+                <i class="fas fa-envelope" style="margin-right: 8px;"></i>
+                judymahmoud6200@gmail.com 
+            </p>
+        </div>
+    </div>
+
+        <!-- Team Member  - Updated for dark theme -->
+        <div style="background-color: rgba(255, 255, 255, 0.05); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px; overflow: hidden; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+        <div style="background: linear-gradient(135deg, #4b6cb7 0%, #182848 100%); height: 120px; position: relative;">
+            <div style="width: 100px; height: 100px; border-radius: 50%; border: 5px solid rgba(255, 255, 255, 0.1); background-color: rgba(0, 0, 0, 0.3); position: absolute; bottom: -40px; left: 50%; transform: translateX(-50%); overflow: hidden; display: flex; align-items: center; justify-content: center;">
+                <img 
+                    src="aya.jpg" 
+                    alt="AY"
+                    style="width: 100%; height: 100%; object-fit: cover;"
+                >
+            </div>
+        </div>
+        <div style="padding: 60px 25px 25px; text-align: center;">
+            <h3 style="font-size: 1.4rem; margin-bottom: 8px; color: var(--offwhite);">Aya Yasser</h3>
+            <p style="color: var(--teal); font-weight: 600; margin-bottom: 12px;">HR / CEO (Software Team)</p>
+            <p style="color: var(--text-gray); margin-bottom: 15px; font-size: 0.95rem;">
+                <i class="fas fa-envelope" style="margin-right: 8px;"></i>
+                Aya.1824508@stemksheikh.moe.edu.eg
+            </p>
+        </div>
+    </div>
+
+        <!-- Team Member  - Updated for dark theme -->
+        <div style="background-color: rgba(255, 255, 255, 0.05); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px; overflow: hidden; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+        <div style="background: linear-gradient(135deg, #4b6cb7 0%, #182848 100%); height: 120px; position: relative;">
+            <div style="width: 100px; height: 100px; border-radius: 50%; border: 5px solid rgba(255, 255, 255, 0.1); background-color: rgba(0, 0, 0, 0.3); position: absolute; bottom: -40px; left: 50%; transform: translateX(-50%); overflow: hidden; display: flex; align-items: center; justify-content: center;">
+                <img 
+                    src="basant.jpg" 
+                    alt="BH"
+                    style="width: 100%; height: 100%; object-fit: cover;"
+                >
+            </div>
+        </div>
+        <div style="padding: 60px 25px 25px; text-align: center;">
+            <h3 style="font-size: 1.4rem; margin-bottom: 8px; color: var(--offwhite);">Basant Hisham</h3>
+            <p style="color: var(--teal); font-weight: 600; margin-bottom: 12px;">HR / CEO (Software Team)</p>
+            <p style="color: var(--text-gray); margin-bottom: 15px; font-size: 0.95rem;">
+                <i class="fas fa-envelope" style="margin-right: 8px;"></i>
+                Basant.1824511@stemksheikh.moe.edu.eg
+            </p>
+        </div>
+    </div>
+
+        <!-- Team Member  - Updated for dark theme -->
+        <div style="background-color: rgba(255, 255, 255, 0.05); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px; overflow: hidden; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+        <div style="background: linear-gradient(135deg, #4b6cb7 0%, #182848 100%); height: 120px; position: relative;">
+            <div style="width: 100px; height: 100px; border-radius: 50%; border: 5px solid rgba(255, 255, 255, 0.1); background-color: rgba(0, 0, 0, 0.3); position: absolute; bottom: -40px; left: 50%; transform: translateX(-50%); overflow: hidden; display: flex; align-items: center; justify-content: center;">
+                <img 
+                    src="dareen.jpg" 
+                    alt="DM"
+                    style="width: 100%; height: 100%; object-fit: cover;"
+                >
+            </div>
+        </div>
+        <div style="padding: 60px 25px 25px; text-align: center;">
+            <h3 style="font-size: 1.4rem; margin-bottom: 8px; color: var(--offwhite);">Dareen Mohamed</h3>
+            <p style="color: var(--teal); font-weight: 600; margin-bottom: 12px;">CFO / CS (Hardware Team)</p>
+            <p style="color: var(--text-gray); margin-bottom: 15px; font-size: 0.95rem;">
+                <i class="fas fa-envelope" style="margin-right: 8px;"></i>
+                Dareen.1824521@stemksheikh.moe.edu.eg
+            </p>
+        </div>
+    </div>
+
+        <!-- Team Member  - Updated for dark theme -->
+        <div style="background-color: rgba(255, 255, 255, 0.05); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px; overflow: hidden; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+        <div style="background: linear-gradient(135deg, #4b6cb7 0%, #182848 100%); height: 120px; position: relative;">
+            <div style="width: 100px; height: 100px; border-radius: 50%; border: 5px solid rgba(255, 255, 255, 0.1); background-color: rgba(0, 0, 0, 0.3); position: absolute; bottom: -40px; left: 50%; transform: translateX(-50%); overflow: hidden; display: flex; align-items: center; justify-content: center;">
+                <img 
+                    src="habiba.jpg" 
+                    alt="HG"
+                    style="width: 100%; height: 100%; object-fit: cover;"
+                >
+            </div>
+        </div>
+        <div style="padding: 60px 25px 25px; text-align: center;">
+            <h3 style="font-size: 1.4rem; margin-bottom: 8px; color: var(--offwhite);">Habiba Gaber</h3>
+            <p style="color: var(--teal); font-weight: 600; margin-bottom: 12px;">SCM (Hardware Team)</p>
+            <p style="color: var(--text-gray); margin-bottom: 15px; font-size: 0.95rem;">
+                <i class="fas fa-envelope" style="margin-right: 8px;"></i>
+                habiba.1824517@stemksheikh.moe.edu.eg
+            </p>
+        </div>
+    </div>
+
+        <!-- Team Member  - Updated for dark theme -->
+        <div style="background-color: rgba(255, 255, 255, 0.05); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px; overflow: hidden; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+        <div style="background: linear-gradient(135deg, #4b6cb7 0%, #182848 100%); height: 120px; position: relative;">
+            <div style="width: 100px; height: 100px; border-radius: 50%; border: 5px solid rgba(255, 255, 255, 0.1); background-color: rgba(0, 0, 0, 0.3); position: absolute; bottom: -40px; left: 50%; transform: translateX(-50%); overflow: hidden; display: flex; align-items: center; justify-content: center;">
+                <img 
+                    src="shimaa.jpg" 
+                    alt="SM"
+                    style="width: 100%; height: 100%; object-fit: cover;"
+                >
+            </div>
+        </div>
+        <div style="padding: 60px 25px 25px; text-align: center;">
+            <h3 style="font-size: 1.4rem; margin-bottom: 8px; color: var(--offwhite);">Shimaa Mohamed</h3>
+            <p style="color: var(--teal); font-weight: 600; margin-bottom: 12px;">CFO / SCM (Software Team)</p>
+            <p style="color: var(--text-gray); margin-bottom: 15px; font-size: 0.95rem;">
+                <i class="fas fa-envelope" style="margin-right: 8px;"></i>
+                shaimaa.1824541@stemksheikh.moe.edu.eg
+            </p>
+        </div>
+    </div>
+
+        <!-- Team Member  - Updated for dark theme -->
+        <div style="background-color: rgba(255, 255, 255, 0.05); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px; overflow: hidden; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+        <div style="background: linear-gradient(135deg, #4b6cb7 0%, #182848 100%); height: 120px; position: relative;">
+            <div style="width: 100px; height: 100px; border-radius: 50%; border: 5px solid rgba(255, 255, 255, 0.1); background-color: rgba(0, 0, 0, 0.3); position: absolute; bottom: -40px; left: 50%; transform: translateX(-50%); overflow: hidden; display: flex; align-items: center; justify-content: center;">
+                <img 
+                    src="rovan.jpg" 
+                    alt="RE"
+                    style="width: 100%; height: 100%; object-fit: cover;"
+                >
+            </div>
+        </div>
+        <div style="padding: 60px 25px 25px; text-align: center;">
+            <h3 style="font-size: 1.4rem; margin-bottom: 8px; color: var(--offwhite);">Rovan Elsayed</h3>
+            <p style="color: var(--teal); font-weight: 600; margin-bottom: 12px;">SCM (Hardware Team)</p>
+            <p style="color: var(--text-gray); margin-bottom: 15px; font-size: 0.95rem;">
+                <i class="fas fa-envelope" style="margin-right: 8px;"></i>
+                rovan.1824522@stemksheikh.moe.edu.eg
+            </p>
+        </div>
+    </div>
+
+        <!-- Team Member  - Updated for dark theme -->
+        <div style="background-color: rgba(255, 255, 255, 0.05); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px; overflow: hidden; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+        <div style="background: linear-gradient(135deg, #4b6cb7 0%, #182848 100%); height: 120px; position: relative;">
+            <div style="width: 100px; height: 100px; border-radius: 50%; border: 5px solid rgba(255, 255, 255, 0.1); background-color: rgba(0, 0, 0, 0.3); position: absolute; bottom: -40px; left: 50%; transform: translateX(-50%); overflow: hidden; display: flex; align-items: center; justify-content: center;">
+                <img 
+                    src="noor.jpg" 
+                    alt="NM"
+                    style="width: 100%; height: 100%; object-fit: cover;"
+                >
+            </div>
+        </div>
+        <div style="padding: 60px 25px 25px; text-align: center;">
+            <h3 style="font-size: 1.4rem; margin-bottom: 8px; color: var(--offwhite);">Noor Mustafa</h3>
+            <p style="color: var(--teal); font-weight: 600; margin-bottom: 12px;">CFO / CEO (Software Team)</p>
+            <p style="color: var(--text-gray); margin-bottom: 15px; font-size: 0.95rem;">
+                <i class="fas fa-envelope" style="margin-right: 8px;"></i>
+                noor.1824553@stemksheikh.moe.edu.eg
+            </p>
+        </div>
+    </div>
+        
+    </div>
+</section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div id="particles-footer"></div>
+    <div class="footer-container">
+
+      <div class="footer-column">
+        <h3>About</h3>
+        <p>Drop2Data empowers communities to protect water quality and adopt sustainable practices.</p>
+      </div>
+
+      <div class="footer-column">
+        <h3>Contact</h3>
+        <p>Kafr El Sheikh, Egypt</p>
+        <a href="mailto:drop2data@gmail.com">drop2data@gmail.com</a>
+      </div>
+
+      <div class="footer-column">
+        <h3>Follow Us</h3>
+        <div class="social-links">
+          <a href="https://www.facebook.com/profile.php?id=61588130181586"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.linkedin.com/in/drop-2-data-a731963b0?utm_source=share_via&utm_content=profile&utm_medium=member_android"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://www.instagram.com/drop2data?igsh=MTJob3huOGVucTZkOQ=="><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+
+
+      
+      <!-- Questions & Suggestions Form -->
+<div class="footer-column footer-form" style="min-width: 280px; background: rgba(255, 255, 255, 0.05); padding: 20px; border-radius: 12px; backdrop-filter: blur(5px); border: 1px solid rgba(255, 255, 255, 0.1);">
+  <h3 style="color: white; margin-bottom: 20px; font-size: 1.3rem; position: relative; padding-bottom: 10px; border-bottom: 2px solid #4cafa2; display: inline-block;">Questions & Suggestions</h3>
+  
+  <form id="contactForm" action="https://formspree.io/f/xbdadzjk" method="POST" class="contact-form" style="display: flex; flex-direction: column; gap: 12px;">
+    
+    <input type="text" name="name" placeholder="Your name" required
+      style="width: 100%; padding: 12px 15px; border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 8px; background: rgba(255, 255, 255, 0.08); color: white; font-size: 0.95rem; transition: all 0.3s ease; box-shadow: 0 2px 5px rgba(0,0,0,0.1);"
+      onfocus="this.style.borderColor='#4cafa2'; this.style.background='rgba(255, 255, 255, 0.15)'; this.style.boxShadow='0 0 0 3px rgba(76, 175, 162, 0.2)'"
+      onblur="this.style.borderColor='rgba(255, 255, 255, 0.15)'; this.style.background='rgba(255, 255, 255, 0.08)'; this.style.boxShadow='0 2px 5px rgba(0,0,0,0.1)'">
+    
+    <input type="email" name="email" placeholder="Your email" required
+      style="width: 100%; padding: 12px 15px; border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 8px; background: rgba(255, 255, 255, 0.08); color: white; font-size: 0.95rem; transition: all 0.3s ease; box-shadow: 0 2px 5px rgba(0,0,0,0.1);"
+      onfocus="this.style.borderColor='#4cafa2'; this.style.background='rgba(255, 255, 255, 0.15)'; this.style.boxShadow='0 0 0 3px rgba(76, 175, 162, 0.2)'"
+      onblur="this.style.borderColor='rgba(255, 255, 255, 0.15)'; this.style.background='rgba(255, 255, 255, 0.08)'; this.style.boxShadow='0 2px 5px rgba(0,0,0,0.1)'">
+    
+    <select name="type" required
+      style="width: 100%; padding: 12px 15px; border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 8px; background: rgba(20, 30, 40, 0.9); color: white; font-size: 0.95rem; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 2px 5px rgba(0,0,0,0.1); appearance: none; background-image: url('data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'16\' height=\'16\' viewBox=\'0 0 24 24\' fill=\'white\'><path d=\'M7 10l5 5 5-5z\'/></svg>'); background-repeat: no-repeat; background-position: right 15px center; background-size: 16px;"
+      onfocus="this.style.borderColor='#4cafa2'; this.style.boxShadow='0 0 0 3px rgba(76, 175, 162, 0.2)'"
+      onblur="this.style.borderColor='rgba(255, 255, 255, 0.15)'; this.style.boxShadow='0 2px 5px rgba(0,0,0,0.1)'">
+      <option value="" disabled selected style="background: #1e2a36; color: rgba(255,255,255,0.8);">Select type</option>
+      <option value="question" style="background: #1e2a36; color: white;">❓ Question</option>
+      <option value="suggestion" style="background: #1e2a36; color: white;">💡 Suggestion</option>
+      <option value="feedback" style="background: #1e2a36; color: white;">📝 Feedback</option>
+    </select>
+    
+    <textarea name="message" placeholder="Your message..." rows="3" required
+      style="width: 100%; padding: 12px 15px; border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 8px; background: rgba(255, 255, 255, 0.08); color: white; font-size: 0.95rem; transition: all 0.3s ease; resize: vertical; min-height: 100px; font-family: inherit; box-shadow: 0 2px 5px rgba(0,0,0,0.1);"
+      onfocus="this.style.borderColor='#4cafa2'; this.style.background='rgba(255, 255, 255, 0.15)'; this.style.boxShadow='0 0 0 3px rgba(76, 175, 162, 0.2)'"
+      onblur="this.style.borderColor='rgba(255, 255, 255, 0.15)'; this.style.background='rgba(255, 255, 255, 0.08)'; this.style.boxShadow='0 2px 5px rgba(0,0,0,0.1)'"></textarea>
+    
+    <button type="submit"
+      style="padding: 14px 20px; background: #4cafa2; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 1rem; font-weight: 600; transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 4px 15px rgba(76, 175, 162, 0.3); border: 1px solid rgba(255, 255, 255, 0.1);"
+      onmouseover="this.style.background='#3d9c8f'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(76, 175, 162, 0.4)'"
+      onmouseout="this.style.background='#4cafa2'; this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(76, 175, 162, 0.3)'"
+      onmousedown="this.style.transform='translateY(1px)'; this.style.boxShadow='0 2px 10px rgba(76, 175, 162, 0.3)'"
+      onmouseup="this.style.transform='translateY(-2px)'">🚀 Send Message</button>
+  </form>
+  
+  <!-- Success Message Container -->
+  <div id="successMessage" style="display: none; margin-top: 15px; padding: 12px; background: rgba(76, 175, 162, 0.15); border: 1px solid #4cafa2; border-radius: 8px; color: #4cafa2; text-align: center; font-weight: 500; backdrop-filter: blur(5px);">
+    ✓ Form submitted successfully!
+  </div>
+</div>
+
+<style>
+  /* Placeholder styling */
+  .footer-form input::placeholder,
+  .footer-form textarea::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+    font-style: italic;
+  }
+  
+  /* Fix for select dropdown colors */
+  .footer-form select option {
+    background-color: #1e2a36;
+    color: white;
+    padding: 10px;
+  }
+  
+  /* Ensure text is visible in inputs */
+  .footer-form input,
+  .footer-form select,
+  .footer-form textarea {
+    color: white;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('contactForm');
+    const successMsg = document.getElementById('successMessage');
+    
+    if (form) {
+      form.addEventListener('submit', function(e) {
+        e.preventDefault(); // Prevent Formspree redirect
+        
+        // Submit the form using fetch API
+        fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: {
+            'Accept': 'application/json'
+          }
+        }).then(response => {
+          if (response.ok) {
+            // Show success message
+            successMsg.style.display = 'block';
+            
+            // Reset form
+            form.reset();
+            
+            // Hide success message after 5 seconds
+            setTimeout(function() {
+              successMsg.style.display = 'none';
+            }, 5000);
+          } else {
+            alert('Something went wrong. Please try again.');
+          }
+        }).catch(error => {
+          alert('Something went wrong. Please try again.');
+        });
+      });
+    }
+  });
+</script>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 Drop2Data. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="Landingscript.js"></script>
+
+  <!-- HAMBURGER ICON -->
+  <div class="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-nav">
+    <a href="Landingpage main.html">About</a>
+    <a href="#contact">Contact</a>
+    <a href="signup.html">Login</a>
+    <a href="signup.html">Sign Up</a>
+  </div>
+  <!-- Backdrop when menu opens -->
+  <div class="mobile-nav-backdrop"></div>
+
+
+
+  <script>
+(function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="_ugSacJw4DmGuOGzHNsWD";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💧</text></svg>">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Drop2Data | Registration</title>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+    margin:0;
+    min-height:100vh;
+    font-family:'Poppins','Segoe UI',sans-serif;
+    background:linear-gradient(135deg,#001a33,#004e92);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:#fff;
+    padding:16px;
+}
+
+.card{
+    width:100%;
+    max-width:500px;
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(14px);
+    border-radius:20px;
+    padding:25px;
+    box-shadow:0 15px 30px rgba(0,0,0,.4);
+}
+
+@media (min-width: 768px) {
+    .card{
+        padding:35px;
+        box-shadow:0 25px 50px rgba(0,0,0,.4);
+    }
+}
+
+.logo{
+    font-size:24px;
+    font-weight:700;
+    text-align:center;
+    color:#6ec6ff;
+    margin-bottom:8px;
+}
+
+@media (min-width: 768px) {
+    .logo{
+        font-size:28px;
+    }
+}
+
+.subtitle{
+    text-align:center;
+    font-size:13px;
+    opacity:.8;
+    margin-bottom:20px;
+}
+
+@media (min-width: 768px) {
+    .subtitle{
+        font-size:14px;
+        margin-bottom:25px;
+    }
+}
+
+.mode-switch{
+    display:flex;
+    gap:8px;
+    margin-bottom:20px;
+}
+
+.mode-switch button{
+    flex:1;
+    padding:12px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    background:rgba(255,255,255,.15);
+    color:#fff;
+    font-weight:500;
+    font-size:14px;
+    transition: all 0.2s ease;
+}
+
+.mode-switch button.active{
+    background:#6ec6ff;
+    color:#002b4d;
+}
+
+.input-group{
+    margin-bottom:16px;
+}
+
+.input-group label{
+    font-size:13px;
+    opacity:.8;
+    display:block;
+    margin-bottom:4px;
+}
+
+.input-group input,
+.input-group select{
+    width:100%;
+    padding:14px 12px;
+    border-radius:10px;
+    border:none;
+    outline:none;
+    font-size:15px;
+    background:rgba(255,255,255,0.9);
+    color:#001a33;
+}
+
+.input-group input::placeholder,
+.input-group select::placeholder{
+    color:#666;
+}
+
+.flex{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+@media (min-width: 480px) {
+    .flex{
+        flex-direction:row;
+    }
+}
+
+.flex select{
+    width:100%;
+}
+
+@media (min-width: 480px) {
+    .flex select{
+        width:120px;
+        flex-shrink:0;
+    }
+}
+
+.flex input{
+    flex:1;
+}
+
+.password-box{
+    position:relative;
+}
+
+.eye{
+    position:absolute;
+    right:12px;
+    top:38px;
+    cursor:pointer;
+    font-size:18px;
+    transform:translateY(-50%);
+    background:none;
+    border:none;
+    padding:0;
+    height:24px;
+    width:24px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.password-rules{
+    margin-top:12px;
+    font-size:12px;
+    display:none;
+    background:rgba(255,255,255,0.05);
+    padding:10px;
+    border-radius:8px;
+}
+
+.password-rules div{
+    opacity:.6;
+    margin-bottom:4px;
+    padding-left:20px;
+    position:relative;
+}
+
+.password-rules div:before{
+    content:"✗";
+    position:absolute;
+    left:0;
+}
+
+.password-rules .valid:before{
+    content:"✔";
+}
+
+.password-rules .valid{
+    color:#7CFC98;
+    opacity:1;
+}
+
+.actions{
+    margin-top:25px;
+}
+
+.actions button{
+    width:100%;
+    padding:16px;
+    border:none;
+    border-radius:14px;
+    font-size:16px;
+    cursor:pointer;
+    background:#6ec6ff;
+    color:#002b4d;
+    font-weight:600;
+    transition: background 0.2s ease;
+}
+
+.actions button:hover,
+.actions button:active{
+    background:#5ab8ff;
+}
+
+.msg{
+    margin-top:16px;
+    text-align:center;
+    font-size:14px;
+    padding:8px;
+    border-radius:8px;
+    min-height:20px;
+}
+
+.hidden{display:none}
+
+/* Mobile-specific improvements */
+@media (max-width: 480px) {
+    .card{
+        padding:20px;
+        border-radius:16px;
+    }
+    
+    .input-group input,
+    .input-group select{
+        padding:12px 10px;
+        font-size:14px;
+    }
+    
+    .mode-switch button{
+        padding:10px;
+        font-size:13px;
+    }
+    
+    .actions button{
+        padding:14px;
+        font-size:15px;
+    }
+    
+    .eye{
+        top:34px;
+    }
+}
+
+/* For very small screens */
+@media (max-width: 360px) {
+    body{
+        padding:12px;
+    }
+    
+    .card{
+        padding:16px;
+    }
+    
+    .logo{
+        font-size:22px;
+    }
+    
+    .subtitle{
+        font-size:12px;
+    }
+}
+
+/* Prevent zoom on iOS when focusing input */
+@media (max-width: 480px) {
+    input, select, textarea {
+        font-size: 16px !important;
+    }
+}
+
+/* Improve touch targets */
+button, 
+input[type="submit"],
+input[type="button"] {
+    min-height: 44px;
+}
+
+.mode-switch button {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <div class="logo">Drop2Data</div>
+    <div class="subtitle">Smart Water Platform</div>
+
+    <div class="mode-switch">
+        <button id="loginBtn" class="active">Login</button>
+        <button id="signupBtn">Sign Up</button>
+    </div>
+
+    <form id="authForm" novalidate> <!-- Added novalidate to prevent browser validation -->
+
+        <!-- Name (Sign up only) -->
+        <div class="input-group hidden" id="nameGroup">
+            <label>Full Name</label>
+            <input type="text" id="name"> <!-- Removed required attribute -->
+        </div>
+
+        <!-- Email -->
+        <div class="input-group">
+            <label>Email</label>
+            <input type="email" id="email"> <!-- Removed required attribute -->
+        </div>
+
+        <!-- Phone -->
+        <div class="input-group hidden" id="phoneGroup">
+            <label>Phone Number</label>
+            <div class="flex">
+                <select id="countryCode">
+                    <option value="+20">🇪🇬 +20</option>
+                    <option value="+966">🇸🇦 +966</option>
+                    <option value="+971">🇦🇪 +971</option>
+                    <option value="+1">🇺🇸 +1</option>
+                </select>
+                <input type="tel" id="phone" placeholder="Mobile number">
+            </div>
+        </div>
+
+        <!-- Number of Family Members -->
+        <div class="input-group hidden" id="familyGroup">
+            <label>Number of Family Members</label>
+            <input type="number" id="familyMembers" min="1" max="20" value="1">
+        </div>
+
+        <!-- Region -->
+        <div class="input-group hidden" id="regionGroup">
+            <label>Region (Governorate)</label>
+            <select id="region">
+                <option value="">Select Governorate</option>
+                <option value="Cairo">Cairo</option>
+                <option value="Alexandria">Alexandria</option>
+                <option value="Giza">Giza</option>
+                <option value="Qalyubia">Qalyubia</option>
+                <option value="Port Said">Port Said</option>
+                <option value="Suez">Suez</option>
+                <option value="Dakahlia">Dakahlia</option>
+                <option value="Sharqia">Sharqia</option>
+                <option value="Monufia">Monufia</option>
+                <option value="Gharbia">Gharbia</option>
+                <option value="Beheira">Beheira</option>
+                <option value="Ismailia">Ismailia</option>
+                <option value="Faiyum">Faiyum</option>
+                <option value="Beni Suef">Beni Suef</option>
+                <option value="Minya">Minya</option>
+                <option value="Asyut">Asyut</option>
+                <option value="Sohag">Sohag</option>
+                <option value="Qena">Qena</option>
+                <option value="Aswan">Aswan</option>
+                <option value="Luxor">Luxor</option>
+                <option value="Red Sea">Red Sea</option>
+                <option value="New Valley">New Valley</option>
+                <option value="Matrouh">Matrouh</option>
+                <option value="North Sinai">North Sinai</option>
+                <option value="South Sinai">South Sinai</option>
+                <option value="Damietta">Damietta</option>
+                <option value="Kafr El Sheikh">Kafr El Sheikh</option>
+            </select>
+        </div>
+
+        <!-- Password -->
+        <div class="input-group password-box">
+            <label>Password</label>
+            <input type="password" id="password"> <!-- Removed required attribute -->
+            <button type="button" class="eye" id="eye" aria-label="Toggle password visibility">👁️</button>
+        </div>
+
+        <!-- Password rules (Sign up only) -->
+        <div class="password-rules" id="passwordRules">
+            <div id="r1">Minimum 8 characters</div>
+            <div id="r2">At least 2 numbers</div>
+            <div id="r3">At least 1 symbol</div>
+        </div>
+
+        <!-- Gender -->
+        <div class="input-group hidden" id="genderGroup">
+            <label>Gender</label>
+            <select id="gender">
+                <option value="Female">Female</option>
+                <option value="Male">Male</option>
+            </select>
+        </div>
+
+        <!-- Age -->
+        <div class="input-group hidden" id="ageGroup">
+            <label>Age</label>
+            <input type="number" id="age" min="12">
+        </div>
+
+        <div class="actions">
+            <button type="submit" id="submitBtn">Login</button>
+        </div>
+
+        <div class="msg" id="msg"></div>
+
+    </form>
+</div>
+
+<script>
+// ====== YOUR GOOGLE SCRIPT URL ======
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzYppTHxd1d4ZNr3lfq7CWMirWIQrbnjY1IzF48xdOLeUzshsltrXH4fGdxhdP-ukZVRw/exec";
+
+// ====== SIMPLE AUTH SYSTEM ======
+document.addEventListener('DOMContentLoaded', function() {
+  // Elements
+  const loginBtn = document.getElementById("loginBtn");
+  const signupBtn = document.getElementById("signupBtn");
+  const submitBtn = document.getElementById("submitBtn");
+  const msg = document.getElementById("msg");
+  const authForm = document.getElementById("authForm");
+  
+  // Mode
+  let isLoginMode = true;
+  
+  // Switch modes with proper field management
+  loginBtn.onclick = function() {
+    isLoginMode = true;
+    loginBtn.classList.add("active");
+    signupBtn.classList.remove("active");
+    submitBtn.textContent = "Login";
+    
+    // Hide signup fields
+    document.getElementById("nameGroup").classList.add("hidden");
+    document.getElementById("phoneGroup").classList.add("hidden");
+    document.getElementById("familyGroup").classList.add("hidden");
+    document.getElementById("regionGroup").classList.add("hidden");
+    document.getElementById("genderGroup").classList.add("hidden");
+    document.getElementById("ageGroup").classList.add("hidden");
+    document.getElementById("passwordRules").style.display = "none";
+    
+    // Clear signup fields (optional, but good practice)
+    document.getElementById("name").value = "";
+    document.getElementById("phone").value = "";
+    document.getElementById("familyMembers").value = "1";
+    document.getElementById("region").selectedIndex = 0;
+    document.getElementById("gender").selectedIndex = 0;
+    document.getElementById("age").value = "";
+    
+    clearMessage();
+  };
+  
+  signupBtn.onclick = function() {
+    isLoginMode = false;
+    signupBtn.classList.add("active");
+    loginBtn.classList.remove("active");
+    submitBtn.textContent = "Create Account";
+    
+    // Show signup fields
+    document.getElementById("nameGroup").classList.remove("hidden");
+    document.getElementById("phoneGroup").classList.remove("hidden");
+    document.getElementById("familyGroup").classList.remove("hidden");
+    document.getElementById("regionGroup").classList.remove("hidden");
+    document.getElementById("genderGroup").classList.remove("hidden");
+    document.getElementById("ageGroup").classList.remove("hidden");
+    document.getElementById("passwordRules").style.display = "block";
+    
+    clearMessage();
+  };
+  
+  // ================= PASSWORD RULES =================
+  document.getElementById("password").addEventListener("input", function() {
+    // Only show rules in signup mode
+    if (!isLoginMode) {
+      const passwordValue = this.value;
+      const r1 = document.getElementById("r1");
+      const r2 = document.getElementById("r2");
+      const r3 = document.getElementById("r3");
+      
+      // Rule 1: Minimum 8 characters
+      r1.classList.toggle("valid", passwordValue.length >= 8);
+      
+      // Rule 2: At least 2 numbers
+      const numCount = (passwordValue.match(/\d/g) || []).length;
+      r2.classList.toggle("valid", numCount >= 2);
+      
+      // Rule 3: At least 1 symbol
+      const hasSymbol = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(passwordValue);
+      r3.classList.toggle("valid", hasSymbol);
+    }
+  });
+
+  // Password eye toggle
+  document.getElementById("eye").onclick = function() {
+    const passwordInput = document.getElementById("password");
+    if (passwordInput.type === "password") {
+      passwordInput.type = "text";
+      this.textContent = "🙈";
+    } else {
+      passwordInput.type = "password";
+      this.textContent = "👁️";
+    }
+  };
+  
+  // Form submission
+  authForm.onsubmit = function(e) {
+    e.preventDefault();
+    clearMessage();
+    
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value.trim();
+    
+    // Email format validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    
+    if (!email) {
+      showMessage("Email is required", "error");
+      return;
+    }
+    
+    if (!emailRegex.test(email)) {
+      showMessage("Please enter a valid email address", "error");
+      return;
+    }
+    
+    if (!password) {
+      showMessage("Password is required", "error");
+      return;
+    }
+    
+    if (isLoginMode) {
+      // Login validation
+      if (password.length < 1) {
+        showMessage("Password must be at least 1 character", "error");
+        return;
+      }
+      
+      loginUser(email, password);
+    } else {
+      // Signup validation
+      const name = document.getElementById("name").value.trim();
+      const phone = document.getElementById("phone").value.trim();
+      const familyMembers = document.getElementById("familyMembers").value;
+      const region = document.getElementById("region").value;
+      const gender = document.getElementById("gender").value;
+      const age = document.getElementById("age").value;
+      const countryCode = document.getElementById("countryCode").value;
+      
+      console.log("📝 Form submission data:", {
+        email, password, name, phone, familyMembers, 
+        region, gender, age, countryCode
+      });
+      
+      if (!name) {
+        showMessage("Please enter your full name", "error");
+        return;
+      }
+      
+      if (!phone) {
+        showMessage("Please enter your phone number", "error");
+        return;
+      }
+      
+      // Phone number validation
+      if (phone.replace(/\D/g, '').length < 5) {
+        showMessage("Please enter a valid phone number", "error");
+        return;
+      }
+      
+      if (!region) {
+        showMessage("Please select your region", "error");
+        return;
+      }
+      
+      if (!gender) {
+        showMessage("Please select your gender", "error");
+        return;
+      }
+      
+      // Validate age
+      if (!age || age < 12) {
+        showMessage("Age must be at least 12", "error");
+        return;
+      }
+      
+      // Validate family members
+      if (!familyMembers || familyMembers < 1) {
+        showMessage("Number of family members must be at least 1", "error");
+        return;
+      }
+      
+      // Validate password strength for signup
+      if (!validatePasswordStrength(password)) {
+        showMessage("Password must have: 8+ chars, 2+ numbers, 1+ symbol", "error");
+        return;
+      }
+      
+      // Combine country code with phone number
+      const fullPhoneNumber = countryCode + phone.replace(/\D/g, '');
+      
+      // Show what will be sent
+      console.log("📤 Sending to server:", {
+        email, password, name, phone: fullPhoneNumber, 
+        gender, age, familyMembers, region
+      });
+      
+      signupUser(email, password, name, fullPhoneNumber, gender, age, familyMembers, region);
+    }
+  };
+  
+  // ====== SIGNUP FUNCTION ======
+function signupUser(email, password, name, phone, gender, age, familyMembers, region) {
+  showMessage("Creating account...", "info");
+  console.log("🔄 Starting signup process...");
+  
+  // Create unique callback name
+  const callbackName = 'jsonp_callback_' + Date.now() + '_' + Math.random().toString(36).substr(2);
+  
+  // Create the URL with parameters
+  const params = new URLSearchParams({
+    type: 'signup',
+    email: email,
+    password: password,
+    name: name,
+    phone: phone,
+    gender: gender,
+    age: age,
+    familyMembers: familyMembers,
+    region: region,
+    callback: callbackName
+  });
+  
+  const requestUrl = GOOGLE_SCRIPT_URL + '?' + params.toString();
+  console.log("🌐 Request URL:", requestUrl);
+  
+  // Create script element for JSONP
+  const script = document.createElement('script');
+  script.src = requestUrl;
+  
+  // Define the callback function
+  window[callbackName] = function(response) {
+    // Remove the script tag
+    document.head.removeChild(script);
+    
+    // Handle the response
+    console.log("📥 Server response:", response);
+    
+    if (response.success) {
+      console.log("✅ Account created successfully!");
+      showMessage("✅ Account created successfully! Please login.", "success");
+      
+      // Store user data temporarily
+      if (response.user) {
+        localStorage.setItem("tempUser", JSON.stringify(response.user));
+      }
+      
+      // Switch to login mode after 2 seconds
+      setTimeout(function() {
+        loginBtn.click();
+        document.getElementById("email").value = email; // Keep email filled
+        document.getElementById("password").value = "";
+      }, 2000);
+    } else {
+      console.log("❌ Signup failed:", response.message);
+      
+      // Check the specific error
+      if (response.message && response.message.toLowerCase().includes('already registered')) {
+        showMessage("❌ Email already registered. Please use a different email or login.", "error");
+        
+        // Offer to switch to login
+        setTimeout(function() {
+          if (confirm("This email is already registered. Do you want to login instead?")) {
+            loginBtn.click();
+            document.getElementById("email").value = email;
+            document.getElementById("password").value = "";
+          }
+        }, 1000);
+      } else {
+        showMessage("❌ " + response.message, "error");
+      }
+    }
+    
+    // Clean up
+    delete window[callbackName];
+  };
+  
+  // Add error handling
+  script.onerror = function() {
+    document.head.removeChild(script);
+    delete window[callbackName];
+    console.error("❌ Network error");
+    showMessage("⚠️ Connection failed. Please try again.", "error");
+  };
+  
+  // Add timeout handling
+  const timeout = setTimeout(function() {
+    if (script.parentNode) {
+      document.head.removeChild(script);
+    }
+    if (window[callbackName]) {
+      delete window[callbackName];
+    }
+    console.error("⏰ Request timeout");
+    showMessage("⚠️ Request timeout. Please check your connection.", "error");
+  }, 15000);
+  
+  // Clear timeout on success/error
+  script.onload = script.onerror = function() {
+    clearTimeout(timeout);
+  };
+  
+  // Add the script to the page
+  document.head.appendChild(script);
+}
+
+// ====== LOGIN FUNCTION ======
+function loginUser(email, password) {
+  showMessage("Logging in...", "info");
+  console.log("🔄 Starting login process...");
+  
+  // Create unique callback name
+  const callbackName = 'jsonp_callback_' + Date.now() + '_' + Math.random().toString(36).substr(2);
+  
+  // Create the URL with parameters
+  const params = new URLSearchParams({
+    type: 'login',
+    email: email,
+    password: password,
+    callback: callbackName
+  });
+  
+  const requestUrl = GOOGLE_SCRIPT_URL + '?' + params.toString();
+  console.log("🌐 Login URL:", requestUrl);
+  
+  // Create script element for JSONP
+  const script = document.createElement('script');
+  script.src = requestUrl;
+  
+  // Define the callback function
+  window[callbackName] = function(response) {
+    // Remove the script tag
+    document.head.removeChild(script);
+    
+    // Handle the response
+    console.log("📥 Login response:", response);
+    
+    if (response.success) {
+      console.log("✅ Login successful!");
+      showMessage("✅ Login successful! Welcome back 💙", "success");
+      
+      // Store user data
+      if (response.user) {
+        localStorage.setItem("user", JSON.stringify(response.user));
+        localStorage.removeItem("tempUser");
+      }
+      
+      // Redirect after 1 second
+      setTimeout(function() {
+        window.location.href = "profile.html";
+      }, 1000);
+    } else {
+      console.log("❌ Login failed:", response.message);
+      
+      // Provide helpful error messages
+      if (response.message && response.message.toLowerCase().includes('not found')) {
+        showMessage("❌ Email not found. Please sign up first.", "error");
+        
+        // Offer to switch to signup
+        setTimeout(function() {
+          if (confirm("Email not found. Do you want to sign up instead?")) {
+            signupBtn.click();
+            document.getElementById("email").value = email;
+            document.getElementById("password").value = "";
+          }
+        }, 1000);
+      } else if (response.message && response.message.toLowerCase().includes('incorrect password')) {
+        showMessage("❌ Incorrect password. Please try again.", "error");
+      } else {
+        showMessage("❌ " + (response.message || "Login failed"), "error");
+      }
+    }
+    
+    // Clean up
+    delete window[callbackName];
+  };
+  
+  // Add error handling
+  script.onerror = function() {
+    document.head.removeChild(script);
+    delete window[callbackName];
+    console.error("❌ Network error");
+    showMessage("⚠️ Connection failed. Please try again.", "error");
+  };
+  
+  // Add timeout handling
+  const timeout = setTimeout(function() {
+    if (script.parentNode) {
+      document.head.removeChild(script);
+    }
+    if (window[callbackName]) {
+      delete window[callbackName];
+    }
+    console.error("⏰ Login timeout");
+    showMessage("⚠️ Request timeout. Please check your connection.", "error");
+  }, 15000);
+  
+  // Clear timeout on success/error
+  script.onload = script.onerror = function() {
+    clearTimeout(timeout);
+  };
+  
+  // Add the script to the page
+  document.head.appendChild(script);
+}
+
+  // ====== HELPER FUNCTIONS ======
+  function validatePasswordStrength(password) {
+    if (isLoginMode) return true;
+    
+    const minLength = password.length >= 8;
+    const numCount = (password.match(/\d/g) || []).length;
+    const hasTwoNumbers = numCount >= 2;
+    const hasSymbol = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(password);
+    
+    return minLength && hasTwoNumbers && hasSymbol;
+  }
+  
+  function showMessage(text, type) {
+    msg.textContent = text;
+    
+    if (type === "error") {
+      msg.style.color = "#ffb4b4";
+      msg.style.backgroundColor = "rgba(255, 0, 0, 0.1)";
+    } else if (type === "success") {
+      msg.style.color = "#7CFC98";
+      msg.style.backgroundColor = "rgba(124, 252, 152, 0.1)";
+    } else {
+      msg.style.color = "#6ec6ff";
+      msg.style.backgroundColor = "rgba(110, 198, 255, 0.1)";
+    }
+  }
+  
+  function clearMessage() {
+    msg.textContent = "";
+    msg.style.color = "";
+    msg.style.backgroundColor = "";
+  }
+  
+  // ====== TEST CONNECTION ======
+  function testConnection() {
+    console.log("🔌 Testing connection to server...");
+    
+    const callbackName = 'test_callback_' + Date.now();
+    const script = document.createElement('script');
+    script.src = GOOGLE_SCRIPT_URL + '?type=test&callback=' + callbackName;
+    
+    window[callbackName] = function(response) {
+      document.head.removeChild(script);
+      console.log("📥 Test response:", response);
+      
+      if (response && response.success) {
+        console.log("✅ Server connection successful");
+        if (response.headers) {
+          console.log("Headers in sheet:", response.headers);
+          console.log("Has email column:", response.headers.includes('email'));
+          console.log("Has password column:", response.headers.includes('password'));
+        }
+      } else {
+        console.error("❌ Server error:", response ? response.message : "No response");
+      }
+      
+      delete window[callbackName];
+    };
+    
+    script.onerror = function() {
+      document.head.removeChild(script);
+      if (window[callbackName]) {
+        delete window[callbackName];
+      }
+      console.error("❌ Cannot connect to server");
+    };
+    
+    document.head.appendChild(script);
+  }
+  
+  // Initialize
+  console.log("🚀 Drop2Data Auth System Initialized");
+  
+  // Test connection on load
+  setTimeout(testConnection, 1000);
+  
+  // Clear any existing temp user data
+  localStorage.removeItem("tempUser");
+});
+</script>
+
+</body>
+</html>

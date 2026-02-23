@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Drop2Data | Awareness</title>
+  <!-- External Libraries -->
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <link rel="stylesheet" href="style.css" />
+  <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+<!-- ================= NAVBAR & footer ================= -->
+<style>
+    /* RESET */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      background: #000820;
+      color: #f8f8f8;
+      overflow-x: hidden;
+    }
+
+    /* Main content area (empty but takes space) */
+    .main-content {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 100px 20px;
+      text-align: center;
+    }
+
+    .main-content h1 {
+      font-size: 2.5rem;
+      background: linear-gradient(90deg, #1abc9c, #7059b6, #ffc0cb);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 20px;
+    }
+
+    .main-content p {
+      color: #cbd5e0;
+      font-size: 1.2rem;
+      max-width: 600px;
+      line-height: 1.6;
+    }
+
+    /* Scroll control */
+    html.no-scroll,
+    body.no-scroll {
+      overflow: hidden !important;
+      height: 100%;
+    }
+
+    /* ============================= */
+    /* COLORS */
+    /* ============================= */
+    :root {
+      --navy: #000820;
+      --primary-blue: #003354;
+      --teal: #34c7b3;
+      --offwhite: #f8f8f8;
+      --pink: #ffc0cb;
+      --text-gray: #cbd5e0;
+      --footer-bg: #003369;
+    }
+
+    /* ============================= */
+    /* NAVBAR */
+    /* ============================= */
+    /* NAVBAR BASE */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 3rem;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 100;
+      /* Glass effect */
+      background: rgba(10, 15, 30, 0.65);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 30px rgba(26, 188, 156, 0.15);
+      transition: background 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    /* LOGO */
+    .navbar .logo {
+      font-weight: 900;
+      font-size: 1.7rem;
+      letter-spacing: 1px;
+      position: relative;
+      color: var(--offwhite);
+      text-decoration: none;
+    }
+
+    /* Subtle glow under logo */
+    .navbar .logo::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--teal), var(--pink));
+      opacity: 0.6;
+      filter: blur(6px);
+    }
+
+    /* NAV LINKS */
+    .navbar a {
+      margin-left: 1.5rem;
+      color: var(--offwhite);
+      text-decoration: none;
+      font-weight: 600;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+
+    /* Neon underline hover */
+    .navbar nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 0%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--teal), var(--pink));
+      transition: width 0.3s ease;
+      border-radius: 2px;
+    }
+
+    .navbar nav a:hover::after {
+      width: 100%;
+    }
+
+    .navbar nav a:hover {
+      color: var(--teal);
+    }
+
+    /* PRIMARY BUTTON (SIGN UP) */
+    .btn-primary {
+      color: var(--offwhite);
+      padding: 0.6rem 1.4rem;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 700;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    /* Glow aura */
+    .btn-primary::before {
+      content: "";
+      position: absolute;
+      inset: -2px;
+      background: linear-gradient(135deg, var(--teal), var(--pink));
+      filter: blur(12px);
+      opacity: 0.5;
+      z-index: -1;
+    }
+
+    /* Hover effect */
+    .btn-primary:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 15px 40px rgba(26, 188, 156, 0.5), 0 0 25px rgba(255, 192, 203, 0.4);
+    }
+
+    /* NAV CENTER */
+    .nav-center {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .nav-center a,
+    .dropbtn {
+      color: var(--offwhite);
+      font-weight: 600;
+      text-decoration: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      position: relative;
+      padding: 0.3rem 0;
+      transition: color 0.3s ease;
+      font-size: 1rem;
+    }
+
+    /* Glow underline */
+    .nav-center a::after,
+    .dropbtn::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 0%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--teal), var(--pink));
+      transition: width 0.3s ease;
+    }
+
+    .nav-center a:hover::after,
+    .dropbtn:hover::after {
+      width: 100%;
+    }
+
+    .nav-center a:hover,
+    .dropbtn:hover {
+      color: var(--teal);
+    }
+
+    /* DROPDOWN */
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown-content::before {
+      content: "";
+      position: absolute;
+      top: -20px;
+      left: 0;
+      width: 100%;
+      height: 25px;
+      background: transparent;
+      cursor: default;
+    }
+
+    .dropdown-content {
+      position: absolute;
+      top: 160%;
+      left: 50%;
+      transform: translateX(-50%);
+      min-width: 200px;
+      padding: 12px;
+      background: rgba(10, 15, 30, 0.85);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(26, 188, 156, 0.25);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateX(-50%) translateY(10px);
+      transition: all 0.3s ease;
+      z-index: 999;
+    }
+
+    .dropdown-content a {
+      display: block;
+      padding: 10px 12px;
+      border-radius: 8px;
+      color: var(--offwhite);
+      text-decoration: none;
+      font-weight: 500;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    .dropdown-content a:hover {
+      background: rgba(26, 188, 156, 0.2);
+      color: white;
+      box-shadow: 0 0 15px rgba(26, 188, 156, 0.4);
+    }
+
+    .dropdown:hover .dropdown-content {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* DESKTOP NAV */
+    .desktop-nav {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    /* ============================= */
+    /* FOOTER */
+    /* ============================= */
+    /* Footer Particles */
+    #particles-footer {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+    }
+
+    /* Site Footer */
+    .site-footer {
+      background: linear-gradient(135deg, #000820, #003369);
+      color: var(--offwhite);
+      padding: 60px 20px 30px;
+      position: relative;
+      overflow: hidden;
+      min-height: 300px;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 30px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .footer-column {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .footer-column h3 {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+
+    .footer-column p,
+    .footer-column a {
+      color: var(--text-gray);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      text-decoration: none;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .footer-column a:hover {
+      color: white;
+    }
+
+    /* Social Icons */
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 10px;
+    }
+
+    .social-links a {
+      font-size: 1.4rem;
+      color: var(--offwhite);
+      transition: transform 0.2s ease;
+    }
+
+    .social-links a:hover {
+      transform: scale(1.2);
+    }
+
+    /* Bottom Bar */
+    .footer-bottom {
+      margin-top: 50px;
+      padding-top: 25px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      text-align: center;
+      color: var(--text-gray);
+      font-size: 0.9rem;
+    }
+
+    /* ============================= */
+    /* MOBILE NAVIGATION */
+    /* ============================= */
+    .hamburger {
+    display: none;
+    cursor: pointer;
+    width: 30px;
+    height: 22px;
+    position: fixed;
+    top: 25px;
+    right: 0.5rem;
+    z-index: 10001;
+    transform: translateZ(0);
+    will-change: transform;
+    }
+
+    .hamburger span {
+      display: block;
+      position: absolute;
+      height: 3px;
+      width: 100%;
+      background: var(--offwhite);
+      border-radius: 9px;
+      opacity: 1;
+      left: 0;
+      transform: rotate(0deg);
+      transition: .25s ease-in-out;
+    }
+
+    .hamburger span:nth-child(1) {
+      top: 0px;
+    }
+
+    .hamburger span:nth-child(2) {
+      top: 10px;
+    }
+
+    .hamburger span:nth-child(3) {
+      top: 20px;
+    }
+
+    .hamburger.active span:nth-child(1) {
+      top: 10px;
+      transform: rotate(135deg);
+    }
+
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+      left: -60px;
+    }
+
+    .hamburger.active span:nth-child(3) {
+      top: 10px;
+      transform: rotate(-135deg);
+    }
+
+    /* Mobile Drawer */
+.mobile-nav {
+  position: fixed;   /* fixed over entire screen */
+  top: 0;            /* start at top of viewport */
+  right: 0;
+  width: 85%;
+  max-width: 380px;
+  height: 100vh;     /* full screen */
+  background: rgba(5, 10, 25, 0.95);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 80px 30px 30px 30px; /* enough top padding so links don’t cover hamburger */
+  transform: translateX(100%);
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 10000; /* BELOW hamburger but ABOVE navbar */
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: -15px 0 45px rgba(0, 0, 0, 0.7);
+}
+
+
+
+    .mobile-nav.active {
+      transform: translateX(0);
+    }
+
+    .mobile-nav a {
+      font-size: 1.3rem;
+      color: var(--offwhite);
+      text-decoration: none;
+      font-weight: 500;
+      padding: 15px 20px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0);
+      border-bottom: none;
+      white-space: nowrap;
+      line-height: 1.1;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+    }
+
+    .mobile-nav a:hover,
+    .mobile-nav a:active {
+      background: rgba(26, 188, 156, 0.15);
+      text-shadow: 0 0 10px var(--teal), 0 0 20px rgba(26, 188, 156, 0.5);
+      color: var(--teal);
+    }
+
+    /* Backdrop when menu opens */
+    
+    .mobile-nav-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+    z-index: 3500;
+    }
+
+    .mobile-nav-backdrop.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* ============================= */
+    /* RESPONSIVE STYLES */
+    /* ============================= */
+    @media (max-width: 768px) {
+      /* NAVBAR */
+      .navbar {
+        padding: 1rem 1.5rem;
+      }
+
+      .navbar .logo {
+        font-size: 1.4rem;
+      }
+
+      .nav-center {
+        display: none;
+      }
+
+      .desktop-nav {
+        display: none;
+      }
+
+      .hamburger {
+        display: block;
+      }
+
+      /* MAIN CONTENT */
+      .main-content h1 {
+        font-size: 2rem;
+      }
+
+      .main-content p {
+        font-size: 1rem;
+        padding: 0 15px;
+      }
+
+      /* FOOTER */
+      .footer-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 40px;
+      }
+
+      .footer-column {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .social-links {
+        justify-content: center;
+        margin-top: 15px;
+      }
+
+      .social-links a {
+        font-size: 1.6rem;
+        margin: 0 10px;
+      }
+    }
+
+    /* Very small screens */
+    @media (max-width: 400px) {
+      .mobile-nav {
+        padding: 80px 15px;
+        width: 90%;
+      }
+
+      .mobile-nav a {
+        padding: 12px 15px;
+        font-size: 1.2rem;
+      }
+
+      .hamburger {
+        right: 0.5rem;
+      }
+    }
+  </style>
+
+<header class="navbar">
+  <a href="/Landingpage.html" class="logo">Drop2Data</a>
+
+  <div class="nav-center">
+    <a href="/Landingpage.html">About</a>
+    <!-- DROPDOWN -->
+      <div class="dropdown">
+        <button class="dropbtn">Explore ▾</button>
+        <div class="dropdown-content">
+          <a href="/research.html">Research Hub</a>
+            <a href="index.html">Awareness Center</a>
+            <a href="/Drop2Data dashboard\index.html">Dashboard</a>
+            <a href="/challenge.html">Challenge</a>
+            <a href="/webpage drop\product.html">Products</a>
+        </div>
+      </div>
+    <a href="#contact">Contact</a>
+  </div>
+
+  <!-- RIGHT -->
+    <nav class="desktop-nav">
+      <a href="/profile.html" class="btn-primary">Profile</a>
+    </nav>
+
+  <div class="hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</header>
+
+<div class="mobile-nav" id="mobileNav">
+  <a href="/Landingpage.html">About</a>
+  <a href="/research.html">Research</a>
+  <a href="#">Awareness Center</a>
+  <a href="#data">Data</a>
+  <a href="/signup.html">Login</a>
+  <a href="/signup.html">Sign Up</a>
+</div>
+<div class="mobile-nav-backdrop"></div>
+<script>
+  // This script is just for initial menu structure
+  // The main functionality is in the script at the bottom
+  document.addEventListener('DOMContentLoaded', function() {
+    // Ensure menu starts closed
+    const mobileNav = document.getElementById("mobileNav");
+    if (mobileNav) mobileNav.classList.remove("active");
+  });
+</script>
+<!-- ================= END NAVBAR ================= -->
+
+  <!-- HERO SECTION -->
+  <section class="hero" id="home">
+    <h1 class="fade-in">Smart Water. Smarter Choices.</h1>
+    <p class="fade-in">
+      Practical awareness to change how we use and protect water every day.
+    </p>
+  </section>
+
+ <!-- VIDEOS SECTION -->
+<section class="videos" id="videos">
+  <h2 class="fade-in">Awareness Videos</h2>
+
+  <div class="video-grid">
+
+    <!-- VIDEO 1 -->
+    <div class="video-card fade-in" onclick="openVideo('https://www.youtube.com/embed/5J3cw4biWWo')">
+      <div class="thumbnail fade-in">
+        <img src="https://img.youtube.com/vi/5J3cw4biWWo/hqdefault.jpg" alt="Water Saving Video">
+      </div>
+      <h3 class="fade-in">How to Reduce Daily Water Waste</h3>
+      <p class="fade-in">Simple habits that save liters every day.</p>
+      <span class="tag fade-in">Water Saving</span>
+    </div>
+
+    <!-- VIDEO 2 -->
+    <div class="video-card fade-in" onclick="openVideo('https://www.youtube.com/embed/h5JZz6iC_o0')">
+      <div class="thumbnail fade-in">
+        <img src="https://img.youtube.com/vi/h5JZz6iC_o0/hqdefault.jpg" alt="Recycling Video">
+      </div>
+      <h3 class="fade-in">Recycling Water at Home</h3>
+      <p class="fade-in">Grey water reuse explained step by step.</p>
+      <span class="tag fade-in">Recycling</span>
+    </div>
+
+    <!-- VIDEO 3 -->
+    <div class="video-card fade-in" onclick="openVideo('https://www.youtube.com/embed/kMONRrLd-NU')">
+      <div class="thumbnail fade-in">
+        <img src="https://img.youtube.com/vi/kMONRrLd-NU/hqdefault.jpg" alt="Health Video">
+      </div>
+      <h3 class="fade-in">Water Quality & Health Risks</h3>
+      <p class="fade-in">How chemicals affect long-term health.</p>
+      <span class="tag fade-in">Health</span>
+    </div>
+
+    <!-- VIDEO 4 -->
+    <div class="video-card fade-in" onclick="openVideo('https://www.youtube.com/embed/q_0VCOXmvk0')">
+      <div class="thumbnail fade-in">
+        <img src="https://img.youtube.com/vi/q_0VCOXmvk0/hqdefault.jpg" alt="Sustainability Video">
+      </div>
+      <h3 class="fade-in">Low-cost Sustainability Hacks</h3>
+      <p class="fade-in">Eco-friendly solutions with zero budget.</p>
+      <span class="tag fade-in">Sustainability</span>
+    </div>
+    <!-- VIDEO 1 -->
+<div class="video-card fade-in" onclick="openVideo('https://www.youtube.com/embed/B_t4ZShIois')">
+  <div class="thumbnail fade-in">
+    <img src="https://img.youtube.com/vi/B_t4ZShIois/hqdefault.jpg" alt="Save Water at Home">
+  </div>
+  <h3 class="fade-in">Save Water at Home</h3>
+  <p class="fade-in">Practical tips to reduce water usage in everyday life.</p>
+  <span class="tag fade-in">Water Saving</span>
+</div>
+
+<!-- VIDEO 2 -->
+<div class="video-card fade-in" onclick="openVideo('https://www.youtube.com/embed/ql1vopqPPWg')">
+  <div class="thumbnail fade-in">
+    <img src="https://img.youtube.com/vi/ql1vopqPPWg/hqdefault.jpg" alt="Grey Water Recycling">
+  </div>
+  <h3 class="fade-in">Grey Water Recycling</h3>
+  <p class="fade-in">Learn how to safely reuse bath and sink water for plants.</p>
+  <span class="tag fade-in">Recycling</span>
+</div>
+
+<!-- VIDEO 3 -->
+<div class="video-card fade-in" onclick="openVideo('https://www.youtube.com/embed/QO9i3dlXaOw')">
+  <div class="thumbnail fade-in">
+    <img src="https://img.youtube.com/vi/QO9i3dlXaOw/hqdefault.jpg" alt="Test Water Quality">
+  </div>
+  <h3 class="fade-in">How to Test Water Quality</h3>
+  <p class="fade-in">Step-by-step guide to check if your water is safe for drinking.</p>
+  <span class="tag fade-in">Water Testing</span>
+</div>
+
+<!-- VIDEO 4 -->
+<div class="video-card fade-in" onclick="openVideo('https://www.youtube.com/embed/nTcFXJT0Fsc')">
+  <div class="thumbnail fade-in">
+    <img src="https://img.youtube.com/vi/nTcFXJT0Fsc/hqdefault.jpg" alt="Sustainable Water Habits">
+  </div>
+  <h3 class="fade-in">Sustainable Water Habits</h3>
+  <p class="fade-in">Learn eco-friendly habits to save water and energy at home.</p>
+  <span class="tag fade-in">Sustainability</span>
+</div>
+
+<!-- VIDEO 5 -->
+<div class="video-card fade-in" onclick="openVideo('https://www.youtube.com/embed/GXEuDqoOJoQ')">
+  <div class="thumbnail fade-in">
+    <img src="https://img.youtube.com/vi/GXEuDqoOJoQ/hqdefault.jpg" alt="Detect Contaminated Water">
+  </div>
+  <h3 class="fade-in">Detect Contaminated Water</h3>
+  <p class="fade-in">Tips to identify unsafe water and avoid health risks.</p>
+  <span class="tag fade-in">Health & Safety</span>
+</div>
+
+<!-- VIDEO 6 -->
+<div class="video-card fade-in" onclick="openVideo('https://www.youtube.com/embed/XpM5aqdAdGk')">
+  <div class="thumbnail fade-in">
+    <img src="https://img.youtube.com/vi/XpM5aqdAdGk/hqdefault.jpg" alt="Safe Drinking Water">
+  </div>
+  <h3 class="fade-in">Is Your Drinking Water Safe?</h3>
+  <p class="fade-in">Learn simple ways to ensure your water is clean and healthy.</p>
+  <span class="tag fade-in">Water Safety</span>
+</div>
+
+  </div>
+</section>
+
+
+<!-- VIDEO MODAL -->
+<div class="modal" id="videoModal">
+  <div class="modal-content">
+    <span class="close" onclick="closeVideo()">×</span>
+    <iframe id="videoFrame" allowfullscreen></iframe>
+  </div>
+</div>
+
+
+  <!-- ================= FOOTER ================= -->
+<!-- FOOTER -->
+  <footer class="site-footer">
+    <div id="particles-footer"></div>
+    <div class="footer-container">
+
+      <div class="footer-column">
+        <h3>About</h3>
+        <p>Drop2Data empowers communities to protect water quality and adopt sustainable practices.</p>
+      </div>
+
+      <div id="contact" class="footer-column">
+        <h3>Contact</h3>
+        <p>Kafr El Sheikh, Egypt</p>
+        <a href="mailto:drop2data@gmail.com">drop2data@gmail.com</a>
+      </div>
+
+      <div class="footer-column">
+        <h3>Follow Us</h3>
+        <div class="social-links">
+          <a href="https://www.facebook.com/profile.php?id=61588130181586"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.linkedin.com/in/drop-2-data-a731963b0?utm_source=share_via&utm_content=profile&utm_medium=member_android"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://www.instagram.com/drop2data?igsh=MTJob3huOGVucTZkOQ=="><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 Drop2Data. All rights reserved.</p>
+    </div>
+  </footer>
+
+<script src="script.js"></script>
+<script>
+    // DOM Content Loaded
+    document.addEventListener("DOMContentLoaded", () => {
+      // Initialize Particles.js in footer
+      if (typeof particlesJS !== 'undefined') {
+        particlesJS("particles-footer", {
+          particles: {
+            number: { value: 80 },
+            color: { value: "#ffffff" },
+            size: { value: 3, random: true },
+            move: { speed: 2 },
+            line_linked: { enable: true }
+          },
+          interactivity: {
+            events: {
+              onhover: {
+                enable: true,
+                mode: "repulse"
+              }
+            }
+          },
+          retina_detect: true
+        });
+      }
+
+      // Mobile Navigation Toggle
+      const hamburger = document.querySelector(".hamburger");
+      const mobileNav = document.querySelector(".mobile-nav");
+      const backdrop = document.querySelector(".mobile-nav-backdrop");
+
+      if (hamburger && mobileNav) {
+        const toggleMenu = () => {
+          const isActive = mobileNav.classList.toggle("active");
+          hamburger.classList.toggle("active");
+          if (backdrop) backdrop.classList.toggle("active");
+
+          // Control body scroll
+          if (isActive) {
+            document.body.classList.add("no-scroll");
+            document.documentElement.classList.add("no-scroll");
+          } else {
+            document.body.classList.remove("no-scroll");
+            document.documentElement.classList.remove("no-scroll");
+          }
+        };
+
+        hamburger.addEventListener("click", toggleMenu);
+        if (backdrop) backdrop.addEventListener("click", toggleMenu);
+
+        // Close menu when a link is clicked
+        mobileNav.querySelectorAll("a").forEach(link => {
+          link.addEventListener("click", () => {
+            hamburger.classList.remove("active");
+            mobileNav.classList.remove("active");
+            if (backdrop) backdrop.classList.remove("active");
+            document.body.classList.remove("no-scroll");
+            document.documentElement.classList.remove("no-scroll");
+          });
+        });
+      }
+
+      // Smooth scroll for nav links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          // Don't prevent default for # links that should scroll to top
+          if (this.getAttribute('href') === '#') {
+            e.preventDefault();
+            window.scrollTo({
+              top: 0,
+              behavior: 'smooth'
+            });
+            return;
+          }
+          
+          // For other # links, scroll to element if it exists
+          const targetId = this.getAttribute('href');
+          if (targetId !== '#' && document.querySelector(targetId)) {
+            e.preventDefault();
+            document.querySelector(targetId).scrollIntoView({
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+
+      // Navbar scroll effect
+      let lastScrollTop = 0;
+      const navbar = document.querySelector('.navbar');
+
+      window.addEventListener('scroll', () => {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        
+        // Add scrolled class when not at top
+        if (scrollTop > 50) {
+          navbar.classList.add('scrolled');
+        } else {
+          navbar.classList.remove('scrolled');
+        }
+        
+        lastScrollTop = scrollTop;
+      });
+
+      // Dropdown hover functionality
+      const dropdowns = document.querySelectorAll('.dropdown');
+      dropdowns.forEach(dropdown => {
+        dropdown.addEventListener('mouseenter', () => {
+          dropdown.querySelector('.dropdown-content').style.opacity = '1';
+          dropdown.querySelector('.dropdown-content').style.pointerEvents = 'auto';
+          dropdown.querySelector('.dropdown-content').style.transform = 'translateX(-50%) translateY(0)';
+        });
+
+        dropdown.addEventListener('mouseleave', () => {
+          dropdown.querySelector('.dropdown-content').style.opacity = '0';
+          dropdown.querySelector('.dropdown-content').style.pointerEvents = 'none';
+          dropdown.querySelector('.dropdown-content').style.transform = 'translateX(-50%) translateY(10px)';
+        });
+      });
+    });
+
+    // Handle page load scroll restoration
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+
+    window.addEventListener("load", () => {
+      window.scrollTo(0, 0);
+    });
+  </script>
+
+
+  <script>
+(function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="_ugSacJw4DmGuOGzHNsWD";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
+</script>
+</body>
+</html>

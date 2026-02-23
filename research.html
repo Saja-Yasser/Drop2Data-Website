@@ -1,0 +1,993 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Drop2Data | Water Research</title>
+  <!-- External Libraries -->
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <style>
+
+
+.wrapper{
+  max-width:1400px;
+  margin:auto;
+  padding:50px 30px 80px;
+}
+
+h1{
+  text-align:center;
+  font-size:46px;
+  color:#90e0ef;
+  margin-bottom:20px;
+}
+
+.subtitle{
+  text-align:center;
+  max-width:850px;
+  margin:0 auto 50px;
+  line-height:1.8;
+  opacity:0.9;
+}
+
+.section{
+  margin-bottom:50px;
+  background:rgba(255,255,255,0.08);
+  padding:40px;
+  border-radius:22px;
+}
+
+.section h2{
+  color:#caf0f8;
+  margin-bottom:20px;
+}
+
+p{
+  line-height:1.9;
+  margin:0;
+}
+
+select{
+  width:100%;
+  padding:16px;
+  border-radius:14px;
+  border:none;
+  font-size:17px;
+  outline:none;
+}
+
+.content{
+  margin-top:35px;
+  display:none;
+  grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
+  gap:25px;
+}
+
+.box{
+  background:rgba(255,255,255,0.12);
+  padding:28px;
+  border-radius:18px;
+}
+
+.box h3{
+  color:#90e0ef;
+  margin-bottom:12px;
+}
+
+ul{ padding-left:20px; }
+
+li{ margin-bottom:10px; }
+
+a{ color:#ade8f4; text-decoration:none; }
+
+a:hover{ text-decoration:underline; }
+
+</style>
+<style>
+    /* RESET */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      background: #000820;
+      color: #f8f8f8;
+      overflow-x: hidden;
+    }
+
+    /* Main content area (empty but takes space) */
+    .main-content {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      padding: 100px 20px;
+    }
+
+    .main-content h1 {
+      font-size: 2.5rem;
+      background: linear-gradient(90deg, #1abc9c, #7059b6, #ffc0cb);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 20px;
+    }
+
+    .main-content p {
+      color: #cbd5e0;
+      font-size: 1.2rem;
+      max-width: 600px;
+      line-height: 1.6;
+    }
+
+    /* Scroll control */
+    html.no-scroll,
+    body.no-scroll {
+      overflow: hidden !important;
+      height: 100%;
+    }
+
+    /* ============================= */
+    /* COLORS */
+    /* ============================= */
+    :root {
+      --navy: #000820;
+      --primary-blue: #003354;
+      --teal: #34c7b3;
+      --offwhite: #f8f8f8;
+      --pink: #ffc0cb;
+      --text-gray: #cbd5e0;
+      --footer-bg: #003369;
+    }
+
+    /* ============================= */
+    /* NAVBAR */
+    /* ============================= */
+    /* NAVBAR BASE */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 3rem;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 100;
+      /* Glass effect */
+      background: rgba(10, 15, 30, 0.65);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 30px rgba(26, 188, 156, 0.15);
+      transition: background 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    /* LOGO */
+    .navbar .logo {
+      font-weight: 900;
+      font-size: 1.7rem;
+      letter-spacing: 1px;
+      position: relative;
+      color: var(--offwhite);
+      text-decoration: none;
+    }
+
+    /* Subtle glow under logo */
+    .navbar .logo::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--teal), var(--pink));
+      opacity: 0.6;
+      filter: blur(6px);
+    }
+
+    /* NAV LINKS */
+    .navbar a {
+      margin-left: 1.5rem;
+      color: var(--offwhite);
+      text-decoration: none;
+      font-weight: 600;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+
+    /* Neon underline hover */
+    .navbar nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 0%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--teal), var(--pink));
+      transition: width 0.3s ease;
+      border-radius: 2px;
+    }
+
+    .navbar nav a:hover::after {
+      width: 100%;
+    }
+
+    .navbar nav a:hover {
+      color: var(--teal);
+    }
+
+    /* PRIMARY BUTTON (SIGN UP) */
+    .btn-primary {
+      color: var(--offwhite);
+      padding: 0.6rem 1.4rem;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 700;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    /* Glow aura */
+    .btn-primary::before {
+      content: "";
+      position: absolute;
+      inset: -2px;
+      background: linear-gradient(135deg, var(--teal), var(--pink));
+      filter: blur(12px);
+      opacity: 0.5;
+      z-index: -1;
+    }
+
+    /* Hover effect */
+    .btn-primary:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 15px 40px rgba(26, 188, 156, 0.5), 0 0 25px rgba(255, 192, 203, 0.4);
+    }
+
+    /* NAV CENTER */
+    .nav-center {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .nav-center a,
+    .dropbtn {
+      color: var(--offwhite);
+      font-weight: 600;
+      text-decoration: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      position: relative;
+      padding: 0.3rem 0;
+      transition: color 0.3s ease;
+      font-size: 1rem;
+    }
+
+    /* Glow underline */
+    .nav-center a::after,
+    .dropbtn::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 0%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--teal), var(--pink));
+      transition: width 0.3s ease;
+    }
+
+    .nav-center a:hover::after,
+    .dropbtn:hover::after {
+      width: 100%;
+    }
+
+    .nav-center a:hover,
+    .dropbtn:hover {
+      color: var(--teal);
+    }
+
+    /* DROPDOWN */
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown-content::before {
+      content: "";
+      position: absolute;
+      top: -20px;
+      left: 0;
+      width: 100%;
+      height: 25px;
+      background: transparent;
+      cursor: default;
+    }
+
+    .dropdown-content {
+      position: absolute;
+      top: 160%;
+      left: 50%;
+      transform: translateX(-50%);
+      min-width: 200px;
+      padding: 12px;
+      background: rgba(10, 15, 30, 0.85);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(26, 188, 156, 0.25);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateX(-50%) translateY(10px);
+      transition: all 0.3s ease;
+      z-index: 999;
+    }
+
+    .dropdown-content a {
+      display: block;
+      padding: 10px 12px;
+      border-radius: 8px;
+      color: var(--offwhite);
+      text-decoration: none;
+      font-weight: 500;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    .dropdown-content a:hover {
+      background: rgba(26, 188, 156, 0.2);
+      color: white;
+      box-shadow: 0 0 15px rgba(26, 188, 156, 0.4);
+    }
+
+    .dropdown:hover .dropdown-content {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* DESKTOP NAV */
+    .desktop-nav {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    /* ============================= */
+    /* FOOTER */
+    /* ============================= */
+    /* Footer Particles */
+    #particles-footer {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+    }
+
+    /* Site Footer */
+    .site-footer {
+      background: linear-gradient(135deg, #000820, #003369);
+      color: var(--offwhite);
+      padding: 60px 20px 30px;
+      position: relative;
+      overflow: hidden;
+      min-height: 300px;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 30px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .footer-column {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .footer-column h3 {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+
+    .footer-column p,
+    .footer-column a {
+      color: var(--text-gray);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      text-decoration: none;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .footer-column a:hover {
+      color: white;
+    }
+
+    /* Social Icons */
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 10px;
+    }
+
+    .social-links a {
+      font-size: 1.4rem;
+      color: var(--offwhite);
+      transition: transform 0.2s ease;
+    }
+
+    .social-links a:hover {
+      transform: scale(1.2);
+    }
+
+    /* Bottom Bar */
+    .footer-bottom {
+      margin-top: 50px;
+      padding-top: 25px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      text-align: center;
+      color: var(--text-gray);
+      font-size: 0.9rem;
+    }
+
+    /* ============================= */
+    /* MOBILE NAVIGATION */
+    /* ============================= */
+    .hamburger {
+    display: none;
+    cursor: pointer;
+    width: 30px;
+    height: 22px;
+    position: fixed;
+    top: 25px;
+    right: 0.5rem;
+    z-index: 10001;
+    transform: translateZ(0);
+    will-change: transform;
+    }
+
+    .hamburger span {
+      display: block;
+      position: absolute;
+      height: 3px;
+      width: 100%;
+      background: var(--offwhite);
+      border-radius: 9px;
+      opacity: 1;
+      left: 0;
+      transform: rotate(0deg);
+      transition: .25s ease-in-out;
+    }
+
+    .hamburger span:nth-child(1) {
+      top: 0px;
+    }
+
+    .hamburger span:nth-child(2) {
+      top: 10px;
+    }
+
+    .hamburger span:nth-child(3) {
+      top: 20px;
+    }
+
+    .hamburger.active span:nth-child(1) {
+      top: 10px;
+      transform: rotate(135deg);
+    }
+
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+      left: -60px;
+    }
+
+    .hamburger.active span:nth-child(3) {
+      top: 10px;
+      transform: rotate(-135deg);
+    }
+
+    /* Mobile Drawer */
+.mobile-nav {
+  position: fixed;   /* fixed over entire screen */
+  top: 0;            /* start at top of viewport */
+  right: 0;
+  width: 85%;
+  max-width: 380px;
+  height: 100vh;     /* full screen */
+  background: rgba(5, 10, 25, 0.95);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 80px 30px 30px 30px; /* enough top padding so links don’t cover hamburger */
+  transform: translateX(100%);
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 10000; /* BELOW hamburger but ABOVE navbar */
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: -15px 0 45px rgba(0, 0, 0, 0.7);
+}
+
+
+
+    .mobile-nav.active {
+      transform: translateX(0);
+    }
+
+    .mobile-nav a {
+      font-size: 1.3rem;
+      color: var(--offwhite);
+      text-decoration: none;
+      font-weight: 500;
+      padding: 15px 20px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0);
+      border-bottom: none;
+      white-space: nowrap;
+      line-height: 1.1;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+    }
+
+    .mobile-nav a:hover,
+    .mobile-nav a:active {
+      background: rgba(26, 188, 156, 0.15);
+      text-shadow: 0 0 10px var(--teal), 0 0 20px rgba(26, 188, 156, 0.5);
+      color: var(--teal);
+    }
+
+    /* Backdrop when menu opens */
+    
+    .mobile-nav-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+    z-index: 3500;
+    }
+
+    .mobile-nav-backdrop.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* ============================= */
+    /* RESPONSIVE STYLES */
+    /* ============================= */
+    @media (max-width: 768px) {
+      /* NAVBAR */
+      .navbar {
+        padding: 1rem 1.5rem;
+      }
+
+      .navbar .logo {
+        font-size: 1.4rem;
+      }
+
+      .nav-center {
+        display: none;
+      }
+
+      .desktop-nav {
+        display: none;
+      }
+
+      .hamburger {
+        display: block;
+      }
+
+      /* MAIN CONTENT */
+      .main-content h1 {
+        font-size: 2rem;
+      }
+
+      .main-content p {
+        font-size: 1rem;
+        padding: 0 15px;
+      }
+
+      /* FOOTER */
+      .footer-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 40px;
+      }
+
+      .footer-column {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .social-links {
+        justify-content: center;
+        margin-top: 15px;
+      }
+
+      .social-links a {
+        font-size: 1.6rem;
+        margin: 0 10px;
+      }
+    }
+
+    /* Very small screens */
+    @media (max-width: 400px) {
+      .mobile-nav {
+        padding: 80px 15px;
+        width: 90%;
+      }
+
+      .mobile-nav a {
+        padding: 12px 15px;
+        font-size: 1.2rem;
+      }
+
+      .hamburger {
+        right: 0.5rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <!-- LEFT - LOGO -->
+    <a href="Landingpage.html" class="logo">Drop2Data</a>
+
+    <!-- CENTER TITLES -->
+    <div class="nav-center">
+      <a href="Landingpage.html">About</a>
+
+      <!-- DROPDOWN -->
+      <div class="dropdown">
+        <button class="dropbtn">Explore ▾</button>
+        <div class="dropdown-content">
+          <a href="research.html">Research Hub</a>
+            <a href="Drop2Data awareness\index.html">Awareness Center</a>
+            <a href="Drop2Data dashboard\index.html">Dashboard</a>
+            <a href="challenge.html">Challenge</a>
+            <a href="webpage drop\product.html">Products</a>
+        </div>
+      </div>
+
+      <a href="#contact">Contact</a>
+    </div>
+
+    <!-- RIGHT -->
+    <nav class="desktop-nav">
+      <a href="profile.html" class="btn-primary">Profile</a>
+    </nav>
+
+    <!-- HAMBURGER ICON -->
+    <div class="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </header>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-nav">
+    <a href="Landingpage.html">About</a>
+    <a href="research.html">Research Hub</a>
+    <a href="Drop2Data awareness\index.html">Awareness Center</a>
+    <a href="#data">Open Data</a>
+    <a href="Landingpage.html#contact">Contact</a>
+    <a href="signup.html">Login</a>
+    <a href="signup.html">Sign Up</a>
+  </div>
+
+  <!-- Backdrop when menu opens -->
+  <div class="mobile-nav-backdrop"></div>
+
+<main class="main-content">
+<div class="wrapper"><h1>Global Water Research</h1>
+<p class="subtitle">
+Explore extensive data on drinking water, scarcity, pollution, climate impact, water technology, sanitation, ecosystems, agriculture, urban systems, and sustainable management.
+</p><div class="section">
+<h2>Global Water Snapshot</h2>
+<p>
+• 97.5% of Earth's water is saline; 2.5% freshwater.<br>
+• Only 0.7% of freshwater is easily accessible.<br>
+• 2.2 billion people lack safely managed drinking water.<br>
+• 4 billion people face severe water stress at least one month per year.<br>
+• Water demand expected to exceed supply by 40% by 2030.<br>
+• 785 million people still lack basic drinking water facilities globally.
+</p>
+</div><div class="section">
+<h2>Choose Research Topic</h2>
+<select onchange="loadTopic(this.value)">
+<option value="">-- Select Water Research Topic --</option>
+<option value="drinking">Drinking Water Access</option>
+<option value="scarcity">Water Scarcity & Stress</option>
+<option value="pollution">Water Pollution</option>
+<option value="agriculture">Agriculture & Irrigation</option>
+<option value="wastewater">Wastewater & Sanitation</option>
+<option value="groundwater">Groundwater Depletion</option>
+<option value="ecosystems">Aquatic Ecosystems</option>
+<option value="urban">Urban Water Systems</option>
+<option value="desalination">Desalination</option>
+<option value="technology">Smart Water Technology</option>
+<option value="climate">Climate Change & Water</option>
+<option value="health">Water & Public Health</option>
+<option value="policy">Water Policy & Governance</option>
+<option value="sdg6">SDG 6 – Clean Water & Sanitation</option>
+</select><div class="content" id="content">
+<div class="box" id="info"></div>
+<div class="box" id="stats"></div>
+<div class="box" id="links"></div>
+</div>
+</div>
+</div>
+</main>
+<!-- FOOTER -->
+  <footer class="site-footer">
+    <div id="particles-footer"></div>
+    <div class="footer-container">
+
+      <div class="footer-column">
+        <h3>About</h3>
+        <p>Drop2Data empowers communities to protect water quality and adopt sustainable practices.</p>
+      </div>
+
+      <div id="contact" class="footer-column">
+        <h3>Contact</h3>
+        <p>Kafr El Sheikh, Egypt</p>
+        <a href="mailto:drop2data@gmail.com">drop2data@gmail.com</a>
+      </div>
+
+      <div class="footer-column">
+        <h3>Follow Us</h3>
+        <div class="social-links">
+          <a href="https://www.facebook.com/profile.php?id=61588130181586"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.linkedin.com/in/drop-2-data-a731963b0?utm_source=share_via&utm_content=profile&utm_medium=member_android"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://www.instagram.com/drop2data?igsh=MTJob3huOGVucTZkOQ=="><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 Drop2Data. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // DOM Content Loaded
+    document.addEventListener("DOMContentLoaded", () => {
+      // Initialize Particles.js in footer
+      if (typeof particlesJS !== 'undefined') {
+        particlesJS("particles-footer", {
+          particles: {
+            number: { value: 80 },
+            color: { value: "#ffffff" },
+            size: { value: 3, random: true },
+            move: { speed: 2 },
+            line_linked: { enable: true }
+          },
+          interactivity: {
+            events: {
+              onhover: {
+                enable: true,
+                mode: "repulse"
+              }
+            }
+          },
+          retina_detect: true
+        });
+      }
+
+      // Mobile Navigation Toggle
+      const hamburger = document.querySelector(".hamburger");
+      const mobileNav = document.querySelector(".mobile-nav");
+      const backdrop = document.querySelector(".mobile-nav-backdrop");
+
+      if (hamburger && mobileNav) {
+        const toggleMenu = () => {
+          const isActive = mobileNav.classList.toggle("active");
+          hamburger.classList.toggle("active");
+          if (backdrop) backdrop.classList.toggle("active");
+
+          // Control body scroll
+          if (isActive) {
+            document.body.classList.add("no-scroll");
+            document.documentElement.classList.add("no-scroll");
+          } else {
+            document.body.classList.remove("no-scroll");
+            document.documentElement.classList.remove("no-scroll");
+          }
+        };
+
+        hamburger.addEventListener("click", toggleMenu);
+        if (backdrop) backdrop.addEventListener("click", toggleMenu);
+
+        // Close menu when a link is clicked
+        mobileNav.querySelectorAll("a").forEach(link => {
+          link.addEventListener("click", () => {
+            hamburger.classList.remove("active");
+            mobileNav.classList.remove("active");
+            if (backdrop) backdrop.classList.remove("active");
+            document.body.classList.remove("no-scroll");
+            document.documentElement.classList.remove("no-scroll");
+          });
+        });
+      }
+
+      // Smooth scroll for nav links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          // Don't prevent default for # links that should scroll to top
+          if (this.getAttribute('href') === '#') {
+            e.preventDefault();
+            window.scrollTo({
+              top: 0,
+              behavior: 'smooth'
+            });
+            return;
+          }
+          
+          // For other # links, scroll to element if it exists
+          const targetId = this.getAttribute('href');
+          if (targetId !== '#' && document.querySelector(targetId)) {
+            e.preventDefault();
+            document.querySelector(targetId).scrollIntoView({
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+
+      // Navbar scroll effect
+      let lastScrollTop = 0;
+      const navbar = document.querySelector('.navbar');
+
+      window.addEventListener('scroll', () => {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        
+        // Add scrolled class when not at top
+        if (scrollTop > 50) {
+          navbar.classList.add('scrolled');
+        } else {
+          navbar.classList.remove('scrolled');
+        }
+        
+        lastScrollTop = scrollTop;
+      });
+
+      // Dropdown hover functionality
+      const dropdowns = document.querySelectorAll('.dropdown');
+      dropdowns.forEach(dropdown => {
+        dropdown.addEventListener('mouseenter', () => {
+          dropdown.querySelector('.dropdown-content').style.opacity = '1';
+          dropdown.querySelector('.dropdown-content').style.pointerEvents = 'auto';
+          dropdown.querySelector('.dropdown-content').style.transform = 'translateX(-50%) translateY(0)';
+        });
+
+        dropdown.addEventListener('mouseleave', () => {
+          dropdown.querySelector('.dropdown-content').style.opacity = '0';
+          dropdown.querySelector('.dropdown-content').style.pointerEvents = 'none';
+          dropdown.querySelector('.dropdown-content').style.transform = 'translateX(-50%) translateY(10px)';
+        });
+      });
+    });
+
+    // Handle page load scroll restoration
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+
+    window.addEventListener("load", () => {
+      window.scrollTo(0, 0);
+    });
+  </script>
+<script>
+function loadTopic(topic){
+if(topic===""){document.getElementById("content").style.display="none";return;}
+
+const data={
+drinking:{
+info:"• 1 in 4 people lack access to safe drinking water globally.<br>• Rural populations are disproportionately affected.<br>• Contaminated water causes hundreds of thousands of deaths annually.<br>• Contaminants: bacteria, arsenic, fluoride, nitrates.",
+stats:"• 485,000 deaths/year from unsafe water.<br>• 74% global population uses safely managed drinking water.",
+links:["https://www.who.int","https://www.unicef.org","https://www.unwater.org","https://ourworldindata.org/water"]},
+
+scarcity:{
+info:"• Scarcity driven by population growth, climate change, overuse.<br>• MENA & Sub-Saharan Africa most affected.<br>• Groundwater depletion is critical.",
+stats:"• 70% freshwater used in agriculture.<br>• 1.8B may face absolute scarcity by 2025.",
+links:["https://www.worldbank.org","https://www.fao.org","https://www.unesco.org","https://ourworldindata.org"]},
+
+pollution:{
+info:"• Industrial & agricultural pollution major sources.<br>• Plastics threaten rivers & lakes.<br>• Chemical runoff contaminates drinking water.",
+stats:"• 80% of wastewater discharged untreated.<br>• 1.4M deaths linked to polluted water/year.",
+links:["https://www.unep.org","https://www.epa.gov","https://www.who.int","https://www.sciencedirect.com/topics/earth-and-planetary-sciences/water-pollution"]},
+
+agriculture:{
+info:"• Largest consumer of freshwater.<br>• Inefficient irrigation wastes massive volumes.<br>• Water-intensive crops worsen scarcity.",
+stats:"• 70% freshwater for agriculture.<br>• Efficient irrigation reduces usage by 40%.",
+links:["https://www.fao.org","https://www.worldbank.org","https://www.unwater.org"]},
+
+wastewater:{
+info:"• Poor sanitation contaminates freshwater.<br>• Treated wastewater supports sustainability & agriculture.",
+stats:"• 3.6B people lack safely managed sanitation.<br>• Reuse can meet 15% urban demand.",
+links:["https://www.unesco.org","https://www.epa.gov","https://www.unwater.org"]},
+
+groundwater:{
+info:"• Over-extraction lowers water tables.<br>• Recharge rates declining.<br>• Invisible but vital water source.",
+stats:"• 50% of drinking water supplied by groundwater worldwide.",
+links:["https://www.usgs.gov","https://www.worldbank.org","https://www.unesco.org"]},
+
+ecosystems:{
+info:"• Rivers & wetlands support biodiversity.<br>• Dams & pollution disrupt aquatic ecosystems.",
+stats:"• 35% of wetlands lost since 1970.<br>• Biodiversity decline linked to water issues.",
+links:["https://www.worldwildlife.org","https://www.unep.org","https://www.iucn.org"]},
+
+urban:{
+info:"• Aging infrastructure & leaks increase losses.<br>• Urbanization raises water demand.",
+stats:"• Cities lose 25–30% water via leaks.<br>• Urban water stress rising.",
+links:["https://www.worldbank.org","https://www.unwater.org"]},
+
+desalination:{
+info:"• Converts seawater to freshwater.<br>• Energy-intensive; mainly Gulf countries use it.<br>• Helps water-stressed regions.",
+stats:"• 20,000+ desalination plants globally.<br>• Supplies 300+ million people.",
+links:["https://www.iea.org","https://www.nasa.gov","https://www.sciencedirect.com/topics/engineering/desalination"]},
+
+technology:{
+info:"• Smart meters detect leaks & optimize usage.<br>• AI predicts consumption & demand.<br>• IoT supports urban water systems.",
+stats:"• Reduces losses 15–20%.",
+links:["https://www.ibm.com/watson-iot","https://www.worldbank.org","https://www.sciencedirect.com/topics/engineering/smart-water"]},
+
+climate:{
+info:"• Climate change intensifies floods & droughts.<br>• Alters rainfall & snowpack.<br>• Extreme events disrupt water supply.",
+stats:"• 90% of climate disasters are water-related.<br>• Water-related disasters increased 50% in recent decades.",
+links:["https://www.ipcc.ch","https://www.nasa.gov","https://www.unwater.org"]},
+
+health:{
+info:"• Unsafe water spreads infectious diseases.<br>• Hygiene & sanitation depend on clean water access.",
+stats:"• 829,000 deaths/year from unsafe WASH.<br>• Children most affected.",
+links:["https://www.who.int","https://www.unicef.org"]},
+
+policy:{
+info:"• Water governance shapes access & sustainability.<br>• Regulations impact pollution control & allocation.",
+stats:"• Strong governance linked to better water outcomes.",
+links:["https://www.worldbank.org","https://www.un.org/waterforlifedecade/policy","https://www.unwater.org"]},
+
+sdg6:{
+info:"• SDG 6 aims for universal clean water & sanitation by 2030.<br>• Integrates sustainable management, hygiene, and equity.",
+stats:"• 2.2B people still lack safely managed drinking water.<br>• Global progress uneven.",
+links:["https://sdgs.un.org/goals/goal6","https://www.unwater.org/sdg6"]}
+};
+
+document.getElementById("content").style.display="grid";
+document.getElementById("info").innerHTML=`<h3>Research Insights</h3><p>${data[topic].info}</p>`;
+document.getElementById("stats").innerHTML=`<h3>Statistics</h3><p>${data[topic].stats}</p>`;
+document.getElementById("links").innerHTML=`<h3>Sources</h3><ul>${data[topic].links.map(l=>`<li><a href='${l}' target='_blank'>${l}</a></li>`).join('')}</ul>`;
+}
+</script>
+
+
+  <script>
+(function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="_ugSacJw4DmGuOGzHNsWD";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
+</script>
+</body>
+</html>

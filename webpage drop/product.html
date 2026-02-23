@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drop2Data | Products</title>
+    <!-- External Libraries -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    
+    <style>
+        /* RESET & COLOR PALETTE */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --navy: #000820;
+            --primary-blue: #003354;
+            --teal: #34c7b3;
+            --offwhite: #f8f8f8;
+            --pink: #ffc0cb;
+            --text-gray: #cbd5e0;
+            --footer-bg: #003369;
+            --background: #000820;
+            --card-background: #003354;
+            --text-main: #f8f8f8;
+            --text-muted: #cbd5e0;
+            --divider: #003369;
+        }
+
+        body {
+            background: var(--background);
+            color: var(--text-main);
+            line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* ============================= */
+    /* NAVBAR */
+    /* ============================= */
+    /* NAVBAR BASE */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 3rem;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 100;
+      /* Glass effect */
+      background: rgba(10, 15, 30, 0.65);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 30px rgba(26, 188, 156, 0.15);
+      transition: background 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    /* LOGO */
+    .navbar .logo {
+      font-weight: 900;
+      font-size: 1.7rem;
+      letter-spacing: 1px;
+      position: relative;
+      color: var(--offwhite);
+      text-decoration: none;
+    }
+
+    /* Subtle glow under logo */
+    .navbar .logo::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--teal), var(--pink));
+      opacity: 0.6;
+      filter: blur(6px);
+    }
+
+    /* NAV LINKS */
+    .navbar a {
+      margin-left: 1.5rem;
+      color: var(--offwhite);
+      text-decoration: none;
+      font-weight: 600;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+
+    /* Neon underline hover */
+    .navbar nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 0%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--teal), var(--pink));
+      transition: width 0.3s ease;
+      border-radius: 2px;
+    }
+
+    .navbar nav a:hover::after {
+      width: 100%;
+    }
+
+    .navbar nav a:hover {
+      color: var(--teal);
+    }
+
+    /* PRIMARY BUTTON (SIGN UP) */
+    .btn-primary {
+      color: var(--offwhite);
+      padding: 0.6rem 1.4rem;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 700;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    /* Glow aura */
+    .btn-primary::before {
+      content: "";
+      position: absolute;
+      inset: -2px;
+      background: linear-gradient(135deg, var(--teal), var(--pink));
+      filter: blur(12px);
+      opacity: 0.5;
+      z-index: -1;
+    }
+
+    /* Hover effect */
+    .btn-primary:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 15px 40px rgba(26, 188, 156, 0.5), 0 0 25px rgba(255, 192, 203, 0.4);
+    }
+
+    /* NAV CENTER */
+    .nav-center {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .nav-center a,
+    .dropbtn {
+      color: var(--offwhite);
+      font-weight: 600;
+      text-decoration: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      position: relative;
+      padding: 0.3rem 0;
+      transition: color 0.3s ease;
+      font-size: 1rem;
+    }
+
+    /* Glow underline */
+    .nav-center a::after,
+    .dropbtn::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 0%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--teal), var(--pink));
+      transition: width 0.3s ease;
+    }
+
+    .nav-center a:hover::after,
+    .dropbtn:hover::after {
+      width: 100%;
+    }
+
+    .nav-center a:hover,
+    .dropbtn:hover {
+      color: var(--teal);
+    }
+
+    /* DROPDOWN */
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown-content::before {
+      content: "";
+      position: absolute;
+      top: -20px;
+      left: 0;
+      width: 100%;
+      height: 25px;
+      background: transparent;
+      cursor: default;
+    }
+
+    .dropdown-content {
+      position: absolute;
+      top: 160%;
+      left: 50%;
+      transform: translateX(-50%);
+      min-width: 200px;
+      padding: 12px;
+      background: rgba(10, 15, 30, 0.85);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(26, 188, 156, 0.25);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateX(-50%) translateY(10px);
+      transition: all 0.3s ease;
+      z-index: 999;
+    }
+
+    .dropdown-content a {
+      display: block;
+      padding: 10px 12px;
+      border-radius: 8px;
+      color: var(--offwhite);
+      text-decoration: none;
+      font-weight: 500;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    .dropdown-content a:hover {
+      background: rgba(26, 188, 156, 0.2);
+      color: white;
+      box-shadow: 0 0 15px rgba(26, 188, 156, 0.4);
+    }
+
+    .dropdown:hover .dropdown-content {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* DESKTOP NAV */
+    .desktop-nav {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+        .btn-primary {
+            color: var(--offwhite);
+            padding: 0.6rem 1.4rem;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 700;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .btn-primary::before {
+            content: "";
+            position: absolute;
+            inset: -2px;
+            background: linear-gradient(135deg, var(--teal), var(--pink));
+            filter: blur(12px);
+            opacity: 0.5;
+            z-index: -1;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(26, 188, 156, 0.5), 0 0 25px rgba(255, 192, 203, 0.4);
+        }
+
+        /* HAMBURGER MENU */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            width: 30px;
+            height: 22px;
+            position: fixed;
+            top: 25px;
+            right: 0.5rem;
+            z-index: 10001;
+        }
+
+        .hamburger span {
+            display: block;
+            position: absolute;
+            height: 3px;
+            width: 100%;
+            background: var(--offwhite);
+            border-radius: 9px;
+            opacity: 1;
+            left: 0;
+            transform: rotate(0deg);
+            transition: .25s ease-in-out;
+        }
+
+        .hamburger span:nth-child(1) { top: 0px; }
+        .hamburger span:nth-child(2) { top: 10px; }
+        .hamburger span:nth-child(3) { top: 20px; }
+        .hamburger.active span:nth-child(1) { top: 10px; transform: rotate(135deg); }
+        .hamburger.active span:nth-child(2) { opacity: 0; left: -60px; }
+        .hamburger.active span:nth-child(3) { top: 10px; transform: rotate(-135deg); }
+
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 85%;
+            max-width: 380px;
+            height: 100vh;
+            background: rgba(5, 10, 25, 0.95);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            padding: 80px 30px 30px 30px;
+            transform: translateX(100%);
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: 10000;
+            border-left: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: -15px 0 45px rgba(0, 0, 0, 0.7);
+        }
+
+        .mobile-nav.active {
+            transform: translateX(0);
+        }
+
+        .mobile-nav a {
+            font-size: 1.3rem;
+            color: var(--offwhite);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 15px 20px;
+            border-radius: 12px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-align: left;
+        }
+
+        .mobile-nav a:hover {
+            background: rgba(26, 188, 156, 0.15);
+            text-shadow: 0 0 10px var(--teal), 0 0 20px rgba(26, 188, 156, 0.5);
+            color: var(--teal);
+        }
+
+        .mobile-nav-backdrop {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(4px);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+            z-index: 3500;
+        }
+
+        .mobile-nav-backdrop.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        /* ============================= */
+        /* PAGE HEADER */
+        /* ============================= */
+        .page-header {
+            background: linear-gradient(135deg, var(--navy), var(--primary-blue));
+            color: var(--offwhite);
+            padding: 120px 20px 60px;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.1"><path fill="white" d="M50 10 L60 40 L90 40 L65 60 L75 90 L50 70 L25 90 L35 60 L10 40 L40 40 Z"/></svg>');
+            background-size: 50px 50px;
+            opacity: 0.1;
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            color: var(--offwhite);
+            opacity: 0.9;
+        }
+
+        /* ============================= */
+        /* PRODUCT SECTIONS */
+        /* ============================= */
+        section {
+            margin: 30px auto;
+            padding: 30px;
+            background: linear-gradient(135deg, var(--card-background) 0%, #00223a 100%);
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(52, 199, 179, 0.1);
+            max-width: 1400px;
+        }
+
+        section h2 {
+            color: var(--teal);
+            border-bottom: 2px solid var(--pink);
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        section h2 i {
+            color: var(--pink);
+        }
+
+        .products-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .product-card {
+            background: linear-gradient(135deg, #002a4a, #001a2f);
+            border: 1px solid rgba(52, 199, 179, 0.2);
+            border-radius: 16px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(52, 199, 179, 0.2);
+            border-color: var(--teal);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, #003354, #001a2f);
+            border-radius: 12px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border: 1px solid rgba(52, 199, 179, 0.3);
+        }
+
+        .product-image i {
+            font-size: 4rem;
+            color: var(--teal);
+            opacity: 0.8;
+        }
+
+        .product-card img {
+            max-width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 12px;
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .product-card h3 {
+            margin: 15px 0 10px;
+            color: var(--offwhite);
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .product-card p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            margin-bottom: 10px;
+            flex-grow: 1;
+        }
+
+        .price {
+            font-weight: bold;
+            font-size: 1.3rem;
+            color: var(--teal);
+            margin: 15px 0;
+            text-shadow: 0 0 10px rgba(52, 199, 179, 0.3);
+        }
+
+        .buy-button {
+            background: linear-gradient(to right, var(--teal), #2aa593);
+            color: var(--offwhite);
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1rem;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(52, 199, 179, 0.2);
+        }
+
+        .buy-button:hover {
+            background: linear-gradient(to right, #2aa593, var(--teal));
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(52, 199, 179, 0.4);
+        }
+
+        .buy-button i {
+            margin-right: 8px;
+        }
+
+        /* ============================= */
+    /* FOOTER */
+    /* ============================= */
+    /* Footer Particles */
+    #particles-footer {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+    }
+
+    /* Site Footer */
+    .site-footer {
+      background: linear-gradient(135deg, #000820, #003369);
+      color: var(--offwhite);
+      padding: 60px 20px 30px;
+      position: relative;
+      overflow: hidden;
+      min-height: 300px;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 30px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .footer-column {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .footer-column h3 {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+
+    .footer-column p,
+    .footer-column a {
+      color: var(--text-gray);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      text-decoration: none;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .footer-column a:hover {
+      color: white;
+    }
+
+    /* Social Icons */
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 10px;
+    }
+
+    .social-links a {
+      font-size: 1.4rem;
+      color: var(--offwhite);
+      transition: transform 0.2s ease;
+    }
+
+    .social-links a:hover {
+      transform: scale(1.2);
+    }
+
+    /* Bottom Bar */
+    .footer-bottom {
+      margin-top: 50px;
+      padding-top: 25px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      text-align: center;
+      color: var(--text-gray);
+      font-size: 0.9rem;
+    }
+
+        /* ============================= */
+        /* RESPONSIVE */
+        /* ============================= */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 1rem 1.5rem;
+            }
+
+            .navbar .logo {
+                font-size: 1.4rem;
+            }
+
+            .nav-center {
+                display: none;
+            }
+
+            .desktop-nav {
+                display: none;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .page-header {
+                padding: 100px 15px 40px;
+            }
+
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            section {
+                margin: 15px;
+                padding: 20px;
+            }
+
+            .products-container {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-container {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 40px;
+            }
+
+            .footer-column {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .page-header h1 {
+                font-size: 1.5rem;
+            }
+
+            section h2 {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Particles container for footer */
+        #particles-footer {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+        }
+
+        /* No-scroll class */
+        html.no-scroll,
+        body.no-scroll {
+            overflow: hidden !important;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVBAR -->
+    <header class="navbar">
+        <a href="/Landingpage.html" class="logo">Drop2Data</a>
+
+        <div class="nav-center">
+            <a href="/Landingpage.html">About</a>
+
+            <div class="dropdown">
+                <button class="dropbtn">Explore ▾</button>
+                <div class="dropdown-content">
+                    <a href="/research.html">Research Hub</a>
+                    <a href="/Drop2Data awareness\index.html">Awareness Center</a>
+                    <a href="/Drop2Data dashboard\index.html">Dashboard</a>
+                    <a href="/challenge.html">Challenge</a>
+                    <a href="product.html">Products</a>
+                </div>
+            </div>
+
+            <a href="#contact">Contact</a>
+        </div>
+
+        <nav class="desktop-nav">
+            <a href="/profile.html" class="btn-primary">Profile</a>
+        </nav>
+
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </header>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-nav">
+        <a href="Landingpage.html">About</a>
+        <a href="research.html">Research Hub</a>
+        <a href="awareness.html">Awareness Center</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="challenge.html">Challenge</a>
+        <a href="product.html">Products</a>
+        <a href="#contact">Contact</a>
+        <a href="profile.html">Profile</a>
+    </div>
+
+    <div class="mobile-nav-backdrop"></div>
+
+    <!-- PAGE HEADER -->
+    <div class="page-header">
+        <h1><i class="fas fa-box-open" style="margin-right: 15px;"></i> Drop2Data Products</h1>
+        <p>Discover innovative products to save, purify, and manage water efficiently</p>
+    </div>
+
+    <!-- DROP2DATA PRODUCTS SECTION -->
+    <section id="drop2data">
+        <h2><i class="fas fa-microchip"></i> Drop2Data Products</h2>
+        <div class="products-container">
+            <div class="product-card">
+                <div class="product-image">
+                    <i class="fas fa-tint fa-4x"></i>
+                </div>
+                <h3>Smart Water Monitor</h3>
+                <p>Real-time water consumption tracking with AI insights and leak detection.</p>
+                <p class="price">1,299 EGP</p>
+                <a href="#" class="buy-button" target="_blank"><i class="fas fa-shopping-cart"></i> Coming Soon</a>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <i class="fas fa-wifi fa-4x"></i>
+                </div>
+                <h3>IoT Flow Controller</h3>
+                <p>Smart valve system with remote control and automated scheduling.</p>
+                <p class="price">899 EGP</p>
+                <a href="#" class="buy-button" target="_blank"><i class="fas fa-shopping-cart"></i> Coming Soon</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- WATER PURIFICATION SECTION -->
+    <section id="purification">
+        <h2><i class="fas fa-filter"></i> Water Purification Products</h2>
+        <div class="products-container">
+            <div class="product-card">
+                <img src="pure one.jpg" alt="Alkaline Water Purifier">
+                <h3>Alkaline Water Purifier</h3>
+                <p>Home alkaline water purifier alkaline ionizer water with 7-stage filtration.</p>
+                <p class="price">25,022 EGP</p>
+                <a href="https://phipower.org/en/product/alkaline-water-generator-water-ionizer-and-purification-active-carbon-filter-phipower/?gad_source=1&gad_campaignid=20545878410&gbraid=0AAAAABR7BmagP2D0OuvUXCFi2vtjT-G_N&gclid=Cj0KCQiAy6vMBhDCARIsAK8rOgk8EoqYIz77HcpfQ3WvyJjTnU1A670-XGHH68TV_ef1Ngn1UC3Q0HQaAv7vEALw_wcB" class="buy-button" target="_blank"><i class="fas fa-shopping-cart"></i> Buy Now</a>
+            </div>
+            <div class="product-card">
+                <img src="pure two.jpg" alt="Water Filter">
+                <h3>Premium Water Filter</h3>
+                <p>Advanced water purification system with carbon filter technology.</p>
+                <p class="price">1,024 EGP</p>
+                <a href="https://www.sustainable.co.za/collections/water-purification?srsltid=AfmBOooBhFX1vEzb6yYPuePrVL89Ygx2e74Oltq9IqoppGccJzHQ56Xk" class="buy-button" target="_blank"><i class="fas fa-shopping-cart"></i> Buy Now</a>
+            </div>
+            <div class="product-card">
+                <img src="pure three.jpg" alt="5 Stage Water filter">
+                <h3>5 Stage RO System</h3>
+                <p>Water Filter (5-Stage) Reverse Osmosis System with UV sterilization.</p>
+                <p class="price">1,500 EGP</p>
+                <a href="https://www.amazon.eg/-/en/Filter-5-Stage-Reverse-Osmosis-CLASSIC/dp/B0D8ZXHB3K" class="buy-button" target="_blank"><i class="fas fa-shopping-cart"></i> Buy Now</a>
+            </div>
+            <div class="product-card">
+                <img src="pure 4.jpg" alt="Tank power water filter">
+                <h3>Tank Power 7-Stage</h3>
+                <p>Tank power water filter 7 stages RO with 1 year warranty.</p>
+                <p class="price">2,999 EGP</p>
+                <a href="https://www.amazon.eg/-/en/Tank-Power-Filter-stages-Warranty/dp/B08Y8ZCNC1/ref=asc_df_B08Y8ZCNC1?mcid=3014d3b7d2763aed83cacf44928f1442&tag=egoshpadde-21&linkCode=df0&hvadid=725165814373&hvpos=&hvnetw=g&hvrand=3398481850768989511&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=1005400&hvtargid=pla-1418676961105&psc=1&language=en_AE&gad_source=1" class="buy-button" target="_blank"><i class="fas fa-shopping-cart"></i> Buy Now</a>
+            </div>
+            <div class="product-card">
+                <img src="pure 5.jpg" alt="Panasonic water filter">
+                <h3>Panasonic Water Purifier</h3>
+                <p>High-speed filtration with 6 liters per minute capacity.</p>
+                <p class="price">4,444 EGP</p>
+                <a href="https://www.amazon.eg/-/en/Panasonic-Purifier-Filtering-Capacity-Warranty/dp/B091JDMXTP/ref=asc_df_B091JDMXTP?mcid=b51f783ec4c63b6fa3bbf443099a2ac0&tag=egoshpadde-21&linkCode=df0&hvadid=725156498343&hvpos=&hvnetw=g&hvrand=3398481850768989511&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=1005400&hvtargid=pla-1419566826195&psc=1&language=en_AE&gad_source=1" class="buy-button" target="_blank"><i class="fas fa-shopping-cart"></i> Buy Now</a>
+            </div>
+            <div class="product-card">
+                <img src="RO water filtration system.jpg" alt="RO water filter">
+                <h3>RO Water Filtration</h3>
+                <p>Complete reverse osmosis system with sediment and carbon filters.</p>
+                <p class="price">3,480 EGP</p>
+                <a href="https://www.indiamart.com/proddetail/ro-water-filtration-system-15525977455.html?srsltid=AfmBOopBCS7clYkIKKNpBf1-GWx3vbSc5dFXnKsizUbGbYuh4ebbcsUD" class="buy-button" target="_blank"><i class="fas fa-shopping-cart"></i> Buy Now</a>
+            </div>
+            <div class="product-card">
+                <img src="watermast water filter - 7 stages.jpg" alt="Watermast water filter">
+                <h3>Watermast 7-Stage</h3>
+                <p>Complete 7-stage filtration system with mineral enhancement.</p>
+                <p class="price">3,999 EGP</p>
+                <a href="https://www.amazon.eg/-/en/Watermast-Water-Filter-7-Stages/dp/B09236HK52/ref=asc_df_B09236HK52?mcid=4b4b661ea1eb37bdbf1fb15e5fd1d1ae&tag=egoshpadde-21&linkCode=df0&hvadid=725167098127&hvpos=&hvnetw=g&hvrand=2892805102037508946&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9112388&hvtargid=pla-1452214294726&psc=1&language=en_AE&gad_source=1" class="buy-button" target="_blank"><i class="fas fa-shopping-cart"></i> Buy Now</a>
+            </div>
+            <div class="product-card">
+                <img src="tank pro water filter -6 purification .jpg" alt="Tank pro water filter">
+                <h3>Tank Pro 6-Stage</h3>
+                <p>Advanced 6-stage purification with alkaline filter.</p>
+                <p class="price">2,197 EGP</p>
+                <a href="https://www.amazon.eg/-/en/Tank-Pro-Water-Filter-Purification/dp/B0CSG27Z9H/ref=asc_df_B0CSG27Z9H?mcid=d8fc6e63267e362f907e862c6698ed97&tag=egoshpadde-21&linkCode=df0&hvadid=725168071627&hvpos=&hvnetw=g&hvrand=6594164651972679228&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9112388&hvtargid=pla-2302564647480&psc=1&language=en_AE&gad_source=1" class="buy-button" target="_blank"><i class="fas fa-shopping-cart"></i> Buy Now</a>
+            </div>
+            <div class="product-card">
+                <img src="soul aquaJet Ro seven stage filter.jpg" alt="Soul AquaJet">
+                <h3>Soul AquaJet 7-Stage</h3>
+                <p>Premium RO system with 7-stage filtration and UV protection.</p>
+                <p class="price">5,499 EGP</p>
+                <a href="https://www.amazon.eg/-/en/Soul-AquaJet-Seven-Stage-Filter/dp/B0BYKCBZ6L/ref=asc_df_B0BYKCBZ6L?mcid=4dc97b79470a385f8ea523ffd1cf3484&tag=egoshpadde-21&linkCode=df0&hvadid=725165814373&hvpos=&hvnetw=g&hvrand=6594164651972679228&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9112388&hvtargid=pla-2442509144600&psc=1&language=en_AE&gad_source=1" class="buy-button" target="_blank"><i class="fas fa-shopping-cart"></i> Buy Now</a>
+            </div>
+            <div class="product-card">
+                <img src="tank pro RO + UV - wall mounted.jpg" alt="Tank pro RO + UV">
+                <h3>Tank Pro RO + UV</h3>
+                <p>Wall-mounted RO+UV purification system with smart features.</p>
+                <p class="price">6,999 EGP</p>
+                <a href="https://tankwaters.com/en/products/tank-pro-ro-uv?variant=41728917602401&country=EG&currency=EGP&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic&gad_source=1&gad_campaignid=21097701565&gbraid=AAAAADaGkKDwqu5yPF7I-Nuq7c2JpLhqk&gclid=Cj0KCQiA7rDMBhCjARIsAGDBuEBXvnXoL5VeTK8qG5_l6zycj90IumDqMRLdDHzdZCdw75KHg65GO3YaAti6EALw_wcB" class="buy-button" target="_blank"><i class="fas fa-shopping-cart"></i> Buy Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- WATER MANAGEMENT SECTION -->
+    <section id="management">
+        <h2><i class="fas fa-tachometer-alt"></i> Water Management Products</h2>
+        <div class="products-container">
+            <div class="product-card">
+                <img src="high pressure water saving shower head.jpg" alt="Pressure Adjustable shower head">
+                <h3>Pressure Adjustable Shower</h3>
+                <p>Low-flow showerhead with adjustable pressure settings. Saves up to 40% water.</p>
+                <p class="price">63 EGP</p>
+                <a href="https://www.amazon.eg/-/en/Pressure-Adjustable-Experience-Bathroom-Accessories/dp/B0CRHTWJG7/ref=asc_df_B0CRHTWJG7?mcid=566b4c0b8ffe3df7861bca2adb5e4529&tag=egoshpadde-21&linkCode=df0&hvadid=725165814373&hvpos=&hvnetw=g&hvrand=17071945374445363534&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9112388&hvtargid=pla-2295308685821&psc=1&language=en_AE&gad_source=1" class="buy-button" target="_blank"><i class="fas fa-shopping-cart"></i> Buy Now</a>
+            </div>
+            <div class="product-card">
+                <img src="FAUCET aerator.jpg" alt="Faucet aerator">
+                <h3>Replacement Aerator</h3>
+                <p>Faucet aerator that reduces flow while maintaining pressure. Easy installation.</p>
+                <p class="price">83 EGP</p>
+                <a href="https://www.amazon.eg/-/en/walgreen-Xample%C2%AE-Replacement-Aerator-Dispenser/dp/B09SB7ZBP9/ref=asc_df_B09SB7ZBP9?mcid=42ba7061bad030c382d680e3500ae26a&tag=egoshpadde-21&linkCode=df0&hvadid=725245270787&hvpos=&hvnetw=g&hvrand=9772561765757992748&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9112388&hvtargid=pla-1642431903294&psc=1&language=en_AE&gad_source=1" class="buy-button" target="_blank"><i class="fas fa-shopping-cart"></i> Buy Now</a>
+            </div>
+            <div class="product-card">
+                <img src="Egardenkart outdoor watering Timer.jpg" alt="Egardenkart outdoor watering Timer">
+                <h3>Smart Irrigation Timer</h3>
+                <p>Programmable drip irrigation system with weather-based scheduling.</p>
+                <p class="price">1,400 EGP</p>
+                <a href="https://www.amazon.eg/-/en/Egardenkart-Multifunctional-Controller-Intelligent-Irrigation/dp/B0B2N173XD/ref=asc_df_B0B2N173XD?mcid=1e3776401e3a3a1b819bee3b4d560c39&tag=egoshpadde-21&linkCode=df0&hvadid=725130396849&hvpos=&hvnetw=g&hvrand=13468673430432937143&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9112388&hvtargid=pla-1676501302945&psc=1&language=en_AE&gad_source=1" class="buy-button" target="_blank"><i class="fas fa-shopping-cart"></i> Buy Now</a>
+            </div>
+            <div class="product-card">
+                <img src="water leakage detector.jpg" alt="Water Leakage detector">
+                <h3>Smart Water Leak Detector</h3>
+                <p>Wi-Fi enabled leak detection with instant alerts to your phone.</p>
+                <p class="price">7,263 EGP</p>
+                <a href="https://www.temu.com/ul/kuiper/un9.html?subj=goods-un&_bg_fs=1&_p_jump_id=894&_x_vst_scene=adg&goods_id=601099519662942&sku_id=17592229668236&adg_ctx=a-d7c3d4c2~c-2a0666dd&_x_ads_sub_channel=shopping&_p_rfs=1&_x_ns_prz_type=-1&locale_override=60~en~EGP&_x_ns_sku_id=17592229668236&_x_ns_gid=601099519662942&mrk_rec=1&_x_ads_channel=google&_x_gmc_account=5661265603&_x_login_type=Google&_x_ns_gg_lnk_type=adr&_x_ads_account=4251489964&_x_ads_set=23089249878&_x_ads_id=195105180948&_x_ads_creative_id=777910377294&_x_ns_source=g&_x_ns_gclid=Cj0KCQiA7rDMBhCjARIsAGDBuEA_1CWnrNWvg2zVhFxy_QiS6jQSw9TwoNOFsuq-e1nbar526YILZ4EaAjEaEALw_wcB&_x_ns_placement=&_x_ns_match_type=&_x_ns_ad_position=&_x_ns_product_id=17592229668236&_x_ns_target=&_x_ns_devicemodel=&_x_ns_wbraid=CkAKCAiAy6vMBhBxEjAAPY4Zb4wMDnwh-6MclEFgp32olOxHh7biLsZULmJf8sZ9fsGGgFgb_PsqJSzPqlUaAlBN&_x_ns_gbraid=0AAAAAo4mICFVXg5kDaRjcZZm5gmRmV9_5&_x_ns_targetid=pla-2199902624321&gad_source=1&gad_campaignid=23089249878&gbraid=0AAAAAo4mICFVXg5kDaRjcZZm5gmRmV9_5&gclid=Cj0KCQiA7rDMBhCjARIsAGDBuEA_1CWnrNWvg2zVhFxy_QiS6jQSw9TwoNOFsuq-e1nbar526YILZ4EaAjEaEALw_wcB" class="buy-button" target="_blank"><i class="fas fa-shopping-cart"></i> Buy Now</a>
+            </div>
+            <div class="product-card">
+                <img src="Garden water timer.jpg" alt="RAINPOINT Sprinkler">
+                <h3>RAINPOINT Sprinkler Timer</h3>
+                <p>Digital water timer for garden irrigation with programmable schedules.</p>
+                <p class="price">2,415 EGP</p>
+                <a href="https://www.amazon.sa/-/en/RAINPOINT-Sprinkler-Programmable-Waterproof-Irrigation/dp/B0917HZ6FN" class="buy-button" target="_blank"><i class="fas fa-shopping-cart"></i> Buy Now</a>
+            </div>
+            <div class="product-card">
+                <img src="PRESSURE REGULATOR.jpg" alt="Pressure Regulator">
+                <h3>Water Pressure Regulator</h3>
+                <p>Brass pressure reducing valve for hydraulic systems. Saves water and energy.</p>
+                <p class="price">1,899 EGP</p>
+                <a href="https://www.amazon.ae/Keenso-Pressure-Regulator-Reducing-Hydraulic/dp/B07TB8JM31" class="buy-button" target="_blank"><i class="fas fa-shopping-cart"></i> Buy Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div id="particles-footer"></div>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>About</h3>
+                <p>Drop2Data empowers communities to protect water quality and adopt sustainable practices.</p>
+            </div>
+
+            <div id="contact" class="footer-column">
+                <h3>Contact</h3>
+                <p>Kafr El Sheikh, Egypt</p>
+                <a href="mailto:drop2data@gmail.com">drop2data@gmail.com</a>
+            </div>
+
+            <div class="footer-column">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                <a href="https://www.facebook.com/profile.php?id=61588130181586"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.linkedin.com/in/drop-2-data-a731963b0?utm_source=share_via&utm_content=profile&utm_medium=member_android"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.instagram.com/drop2data?igsh=MTJob3huOGVucTZkOQ=="><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Drop2Data. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Initialize Particles.js in footer
+            if (typeof particlesJS !== 'undefined') {
+                particlesJS("particles-footer", {
+                    particles: {
+                        number: { value: 80 },
+                        color: { value: "#ffffff" },
+                        size: { value: 3, random: true },
+                        move: { speed: 2 },
+                        line_linked: { enable: true }
+                    },
+                    interactivity: {
+                        events: {
+                            onhover: {
+                                enable: true,
+                                mode: "repulse"
+                            }
+                        }
+                    },
+                    retina_detect: true
+                });
+            }
+
+            // Mobile Navigation Toggle
+            const hamburger = document.querySelector(".hamburger");
+            const mobileNav = document.querySelector(".mobile-nav");
+            const backdrop = document.querySelector(".mobile-nav-backdrop");
+
+            if (hamburger && mobileNav) {
+                const toggleMenu = () => {
+                    const isActive = mobileNav.classList.toggle("active");
+                    hamburger.classList.toggle("active");
+                    if (backdrop) backdrop.classList.toggle("active");
+
+                    if (isActive) {
+                        document.body.classList.add("no-scroll");
+                        document.documentElement.classList.add("no-scroll");
+                    } else {
+                        document.body.classList.remove("no-scroll");
+                        document.documentElement.classList.remove("no-scroll");
+                    }
+                };
+
+                hamburger.addEventListener("click", toggleMenu);
+                if (backdrop) backdrop.addEventListener("click", toggleMenu);
+
+                mobileNav.querySelectorAll("a").forEach(link => {
+                    link.addEventListener("click", () => {
+                        hamburger.classList.remove("active");
+                        mobileNav.classList.remove("active");
+                        if (backdrop) backdrop.classList.remove("active");
+                        document.body.classList.remove("no-scroll");
+                        document.documentElement.classList.remove("no-scroll");
+                    });
+                });
+            }
+
+            // Navbar scroll effect
+            const navbar = document.querySelector('.navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.style.background = 'rgba(0, 8, 32, 0.85)';
+                    navbar.style.backdropFilter = 'blur(14px)';
+                } else {
+                    navbar.style.background = 'rgba(10, 15, 30, 0.65)';
+                }
+            });
+        });
+    </script>
+
+      <script>
+(function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="_ugSacJw4DmGuOGzHNsWD";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
+</script>
+</body>
+</html>
